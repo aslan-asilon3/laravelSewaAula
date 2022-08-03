@@ -17,9 +17,9 @@ use App\Http\Controllers\AdmintransaksiController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
@@ -57,4 +57,8 @@ Route::group(['middleware' => 'is_admin'], function() {
     // });
     Route::get('admintransaksipdf', [AdmintransaksiController::class, 'generatePDF']);
 });
+
+//landing page
+
+Route::get('/', 'landingController@index')->name('landingindex');
 
