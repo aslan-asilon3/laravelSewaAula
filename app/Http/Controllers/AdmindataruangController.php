@@ -56,6 +56,13 @@ class AdmindataruangController extends Controller
     }
 
 
+    public function show(Ruangan $ruangan)
+    {
+        // $ruangan = Ruangan::all();
+        return view('admin.dataruang.edit', compact('ruangan'));
+    }
+
+
 public function update(Request $request, Ruangan $ruangan)
 {
     $this->validate($request, [

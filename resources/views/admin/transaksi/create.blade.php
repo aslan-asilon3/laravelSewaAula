@@ -25,7 +25,7 @@
 
                         @csrf
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label class="font-weight-bold">GAMBAR</label>
                             <input type="file" class="form-control @error('image') is-invalid @enderror" name="image">
 
@@ -35,7 +35,7 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-                        </div>
+                        </div> --}}
 
                         <div class="form-group">
                             <label class="font-weight-bold">No KTP</label>
@@ -121,8 +121,8 @@
                             @enderror
                         </div>
 
-                        {{ $selisihhari = strtotime(old('tanggalpemakaiandari'))- strtotime(old('tanggalpemakaiandari'))}}
-
+                        {{-- {{ $selisihhari = strtotime(old('tanggalpemakaiandari'))- strtotime(old('tanggalpemakaiandari'))}} --}}
+{{--
                         <div class="form-group">
                             <label class="font-weight-bold">jumlah hari</label>
                             <input type="integer" class="form-control @error('tanggalpemakaiansampai') is-invalid @enderror" name="" value="{{$selisihhari}}" placeholder="{{ $selisihhari}}">
@@ -133,7 +133,7 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-                        </div>
+                        </div> --}}
 
                         <div class="form-group">
                             <label class="font-weight-bold">Ruangan</label>
@@ -172,7 +172,7 @@
                             @enderror
                         </div>
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label class="font-weight-bold">diskon</label>
                             <input type="text" class="form-control @error('diskon') is-invalid @enderror" name="diskon" value="{{ old('diskon') }}" placeholder="Masukkan Diskon">
 
@@ -182,8 +182,8 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-                        </div>
-
+                        </div> --}}
+{{--
                         <div class="form-group">
                             <label class="font-weight-bold">Total Bayar</label>
                             <input type="text" class="form-control @error('totalbayar') is-invalid @enderror" name="totalbayar" value="{{ old('totalbayar') }}" placeholder="Masukkan Total Bayar">
@@ -194,7 +194,7 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-                        </div>
+                        </div> --}}
 
                         <div class="form-group">
                             <label class="font-weight-bold">Keterangan</label>

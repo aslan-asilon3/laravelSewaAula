@@ -26,9 +26,9 @@
                     <form id="form" method="POST" action="/admintransaksipdf">
                         @method('POST')
                         @csrf
-                        <input type="hidden" name="_token" value="CuodKwgBUcMAouMtXpI0ywZNv91QiZBFtrsiadH3">
-                        <input type="hidden" id="pemesan_ktp" name="noktp" value="{{ old('noktp', $transaksi->first()->noktp) }}">
-                        <input type="hidden" id="pemesan_nama" name="namapenyewa" value="{{ old('namapenyewa', $transaksi->first()->namapenyewa) }}">
+                        {{-- <input type="hidden" name="_token" value="CuodKwgBUcMAouMtXpI0ywZNv91QiZBFtrsiadH3">
+                        <input type="hidden" id="pemesan_ktp" name="namapenyewa" value="{{ old('namapenyewa', $transaksi->first()->namapenyewa) }}">
+                        <input type="text" id="pemesanpenyewa" name="namapenyewa" value="{{ old('namapenyewa', $transaksi->first()->namapenyewa) }}">
                         <input type="hidden" id="pemesan_telp" name="nohppenyewa" value="{{ old('nohppenyewa', $transaksi->first()->nohppenyewa) }}">
                         <input type="hidden" id="pemesan_email" name="nohppenyewa" value="{{ old('nohppenyewa', $transaksi->first()->nohppenyewa) }}">
                         <input type="hidden" id="pemesan_alamat" name="nohppenyewa" value="{{ old('nohppenyewa', $transaksi->first()->nohppenyewa) }}">
@@ -38,7 +38,7 @@
                         <input type="hidden" id="sampai" name="nohppenyewa" value="{{ old('nohppenyewa', $transaksi->first()->nohppenyewa) }}">
                         <input type="hidden" id="gedung" name="nohppenyewa" value="{{ old('nohppenyewa', $transaksi->first()->nohppenyewa) }}">
                         <input type="hidden" id="jumlah" name="nohppenyewa" value="{{ old('nohppenyewa', $transaksi->first()->nohppenyewa) }}">
-                        <input type="hidden" id="keperluan" name="nohppenyewa" value="{{ old('nohppenyewa', $transaksi->first()->nohppenyewa) }}">
+                        <input type="hidden" id="keperluan" name="nohppenyewa" value="{{ old('nohppenyewa', $transaksi->first()->nohppenyewa) }}"> --}}
                         <h4 class="mb-1">Ruang Aula Kelas</h4>
                         <hr />
                         <table width="70%" style="margin-bottom:20px">
@@ -48,10 +48,10 @@
                                 <th width="50%">Jumlah Hari:</th>
                             </tr>
                             <tr>
-                                <td>{{ old('tanggalpemakaiandari', $transaksi->first()->tanggalpemakaiandari) }}</td>
-                                <td>{{ old('tanggalpemakaiandari', $transaksi->first()->tanggalpemakaiansampai) }}</td>
-                                <td><input type="hidden" value="{{ $selisihhari = strtotime(old('tanggalpemakaiandari', $transaksi->first()->tanggalpemakaiansampai))- strtotime(old('tanggalpemakaiandari', $transaksi->first()->tanggalpemakaiandari))}}"></td>
-                                <td>{{ $hari = $selisihhari/60/60/24;}}</td>
+                                {{-- <td>{{ $transaksi->namapenyewa }}</td> --}}
+                                {{-- <td>{{ old('tanggalpemakaiandari', $transaksi->first()->tanggalpemakaiansampai) }}</td> --}}
+                                {{-- <td><input type="hidden" value="{{ $selisihhari = strtotime(old('tanggalpemakaiandari', $transaksi->first()->tanggalpemakaiansampai))- strtotime(old('tanggalpemakaiandari', $transaksi->first()->tanggalpemakaiandari))}}"></td> --}}
+                                {{-- <td>{{ $hari = $selisihhari/60/60/24;}}</td> --}}
                             </tr>
                         </table>
                         <table width="70%" style="margin-bottom:20px">
@@ -59,7 +59,8 @@
                                 <th width="50%">Nama Pemesan:</th>
                             </tr>
                             <tr>
-                                <td>{{ old('namapenyewa', $transaksi->first()->namapenyewa) }}</td>
+                                <td>{{ $transaksi}}</td>
+                                {{-- <td><input type="text" class="form-control @error('namapenyewa') is-invalid @enderror" name="namapenyewa" value="{{ $transaksi->namapenyewa }}" placeholder=""></td> --}}
                             </tr>
                         </table>
                         <table width="70%" style="margin-bottom:20px">
@@ -67,7 +68,7 @@
                                 <th>Keperluan:</th>
                             </tr>
                             <tr>
-                                <td>{{ old('keperluan', $transaksi->first()->keperluan) }}</td>
+                                {{-- <td>{{ $transaksi->keperluan }}</td> --}}
                             </tr>
                         </table>
                         <table class="table table-bordered" width="100">
@@ -77,13 +78,13 @@
                                 <th width="25%">Total</th>
                             </tr>
                             <tr>
-                                <td>{{ old('harga', $transaksi->first()->harga) }}</td>
-                                <td>1 hari</td>
-                                <td>Rp. {{ old('totalbayar', $transaksi->first()->totalbayar) }},-</td>
+                                {{-- <td>{{ old('harga', $transaksi->first()->harga) }}</td> --}}
+                                {{-- <td>1 hari</td> --}}
+                                {{-- <td>Rp. {{ old('totalbayar', $transaksi->first()->totalbayar) }},-</td> --}}
                             </tr>
                             <tr>
                                 <td colspan="2"><strong>Total<strong></td>
-                                <td><strong>Rp. {{ $hasil = old('totalbayar', $transaksi->first()->totalbayar)* $hari }},-</strong></td>
+                                {{-- <td><strong>Rp. {{ $hasil = old('totalbayar', $transaksi->first()->totalbayar)* $hari }},-</strong></td> --}}
                             </tr>
                         </table>
                         <button type="submit" class="btn btn-success">Reservasi</button>

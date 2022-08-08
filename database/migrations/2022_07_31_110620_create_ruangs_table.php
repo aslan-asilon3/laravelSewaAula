@@ -15,9 +15,13 @@ class CreateRuangsTable extends Migration
     {
         Schema::create('ruangs', function (Blueprint $table) {
             $table->id();
+            // $table->unsignedBigInteger('id_user');
             $table->string('image');
             $table->enum('namaruangan', ['Aula Utama 1','Aula Utama 2']);
             $table->timestamps();
+
+            // $table->foreign('id_user')->references('id')->on('users');
+
         });
     }
 

@@ -6,6 +6,7 @@ use App\Models\transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use PDF;
+use DB;
 
 class AdmintransaksiController extends Controller
 {
@@ -28,7 +29,7 @@ class AdmintransaksiController extends Controller
         public function store(Request $request)
         {
             $this->validate($request, [
-                'image'     => 'required|image|mimes:png,jpg,jpeg',
+                'image'     => 'image|mimes:png,jpg,jpeg',
                 'noktp'     => 'required',
                 'namapenyewa'   => 'required',
                 'nohppenyewa'   => 'required',
@@ -37,18 +38,18 @@ class AdmintransaksiController extends Controller
                 'tanggalpemakaiandari'   => 'required',
                 'tanggalpemakaiansampai'   => 'required',
                 'namaruangan'   => 'required',
-                'keperluan'   => 'required',
+                'keperluan'   => '',
                 'diskon'   => '',
                 'totalbayar'   => '',
-                'keterangan'   => 'required',
+                'keterangan'   => '',
             ]);
 
             //upload image
-            $image = $request->file('image');
-            $image->storeAs('public/transaksis', $image->hashName());
+            // $image = $request->file('image');
+            // $image->storeAs('public/transaksis', $image->hashName());
 
             $transaksi = Transaksi::create([
-                'image'     => $image->hashName(),
+                // 'image'     => $image->hashName(),
                 'noktp'     => $request->noktp,
                 'namapenyewa'   => $request->namapenyewa,
                 'nohppenyewa'   => $request->nohppenyewa,
@@ -98,7 +99,7 @@ class AdmintransaksiController extends Controller
         ]);
 
         //get data Blog by ID
-        $transaksi = Transaksi::findOrFail($transaksi->first()->id);
+        $transaksi = Transaksi::findOrFail($transaksi->id);
 
         if($request->file('image') == "") {
 
@@ -168,34 +169,23 @@ class AdmintransaksiController extends Controller
         }
         }
 
-        public function show(Transaksi $transaksi)
+        public function show($memberID)
         {
-            return view('admin.transaksi.detail', compact('transaksi'));
+            $transaksi= Transaksi::find($memberID); //This will fetch the respective record from the table.
+            return view('admin.transaksi.detail',compact('transaksi'));
         }
 
-        public function detail()
+        public function detail($id)
         {
-            return view('admin.transaksi.detail');
+            // $transaksi= Transaksi::find($id); //This will fetch the respective record from the table.
+            // $transaksi= Transaksi::select('namapenyewa')->where('id', 1)->first();
+            // $transaksi= Transaksi::select('totalbayar')->where('id', $id)->first();
+
+            return view('admin.transaksi.detail',compact('transaksi'));
         }
 
-        public function generatePDF()
+        public function generatePDF(Transaksi $transaksi)
         {
-
-            // $transaksi = Transaksi::create([
-            //     // 'image'     => $image->hashName(),
-            //     'noktp'     => $request->noktp,
-            //     'namapenyewa'   => $request->namapenyewa,
-            //     'nohppenyewa'   => $request->nohppenyewa,
-            //     'emailpenyewa'   => $request->emailpenyewa,
-            //     'alamatpenyewa'   => $request->alamatpenyewa,
-            //     'tanggalpemakaiandari'   => $request->tanggalpemakaiandari,
-            //     'tanggalpemakaiansampai'   => $request->tanggalpemakaiansampai,
-            //     'namaruangan'   => $request->namaruangan,
-            //     'keperluan'   => $request->keperluan,
-            //     'diskon'   => $request->diskon,
-            //     'totalbayar'   => $request->totalbayar,
-            //     'keterangan'   => $request->keterangan,
-            // ]);
 
             $transaksi = Transaksi::all();
             $pdf = PDF::loadView('admin.transaksi.pdf');

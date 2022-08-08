@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminKelolaAkunController;
 use App\Http\Controllers\AdmindataruangController;
 use App\Http\Controllers\AdmintransaksiController;
+use App\Http\Controllers\ReservatorDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,7 @@ Route::group(['middleware' => 'is_admin'], function() {
 Route::group(['middleware' => 'is_admin'], function() {
     Route::resource('adminruangan', 'AdmindataruangController');
     Route::get('adminruangan/update', 'AdmindataruangController@update')->name('admindataruangupdate');
+    // Route::get('adminruangan/edit', 'AdmindataruangController@edit')->name('admindataruangedit');
 
     // Route::resource('adminruangan', AdmindataruangController::class, ['except' => ['edit']]);
 });
@@ -50,11 +52,28 @@ Route::group(['middleware' => 'is_admin'], function() {
     Route::resource('admintransaksi', 'AdmintransaksiController');
     Route::get('admintransaksi/update', 'AdmintransaksiController@update')->name('admintransaksiupdate');
     Route::get('admintransaksi/detail', 'AdmintransaksiController@detail')->name('admintransaksidetail');
-    // Route::get('admintransaksipdf', 'AdmintransaksiController@AdmintransaksiPDF')->name('admintransaksiPDF');
-    // Route::get('', '@')->name('admintransaksipdf');
-    // Route::get('admintransaksipdf', function () {
-    //     return view('admin.transaksi.pdf');
-    // });
+
     Route::get('admintransaksipdf', [AdmintransaksiController::class, 'generatePDF']);
 });
 
+
+
+// reservator
+Route::group(['middleware' => 'is_admin'], function() {
+    Route::get('reservator', 'ReservatorDashboardController@index')->name('reservatorindex');
+    Route::resource('reservatorkelolaakun', 'ReservatorkelolaakunController');
+    Route::resource('reservatorruangan', 'ReservatordataruangController');
+
+});
+
+
+// penyewa
+Route::group(['middleware' => 'is_admin'], function() {
+    Route::get('penyewa', 'ReservatorDashboardController@index')->name('penyewaindex');
+});
+
+
+// kepala puskesmas
+Route::group(['middleware' => 'is_admin'], function() {
+    Route::get('kepalapuskesmas', 'ReservatorDashboardController@index')->name('kepalapuskesmasindex');
+});
