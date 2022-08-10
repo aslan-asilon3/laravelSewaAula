@@ -78,6 +78,7 @@ class AdmintransaksiController extends Controller
         public function edit(Transaksi $transaksi)
         {
             return view('admin.transaksi.edit', compact('transaksi'));
+            return view('admin.transaksi.detail', compact('transaksi'));
         }
 
 
@@ -175,13 +176,11 @@ class AdmintransaksiController extends Controller
             return view('admin.transaksi.detail',compact('transaksi'));
         }
 
-        public function detail($id)
+        public function detail(Transaksi $transaksi)
         {
-            // $transaksi= Transaksi::find($id); //This will fetch the respective record from the table.
-            // $transaksi= Transaksi::select('namapenyewa')->where('id', 1)->first();
-            // $transaksi= Transaksi::select('totalbayar')->where('id', $id)->first();
+            // $transaksi= Transaksi::find($transaksi)->get()->first(); //This will fetch the respective record from the table.
 
-            return view('admin.transaksi.detail',compact('transaksi'));
+            // return view('admin.transaksi.detail',compact('transaksi'));
         }
 
         public function generatePDF(Transaksi $transaksi)
