@@ -12,7 +12,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Data Ruang</h1>
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
 
     <!-- Content Row -->
@@ -42,6 +42,7 @@
                                 <td class="text-center">
                                     <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('adminruangan.destroy', $ruangan->id) }}" method="POST">
                                         <a href="{{ route('adminruangan.edit', $ruangan->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                        {{-- <a href="adminruangan/edit" class="btn btn-sm btn-primary">EDIT</a> --}}
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>

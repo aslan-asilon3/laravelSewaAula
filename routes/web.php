@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminKelolaAkunController;
 use App\Http\Controllers\AdmindataruangController;
 use App\Http\Controllers\AdmintransaksiController;
+use App\Http\Controllers\ReservatorDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,22 +42,40 @@ Route::group(['middleware' => 'is_admin'], function() {
 Route::group(['middleware' => 'is_admin'], function() {
     Route::resource('adminruangan', 'AdmindataruangController');
     Route::get('adminruangan/update', 'AdmindataruangController@update')->name('admindataruangupdate');
+    // Route::get('adminruangan/edit', 'AdmindataruangController@edit')->name('admindataruangedit');
 
     // Route::resource('adminruangan', AdmindataruangController::class, ['except' => ['edit']]);
 });
 
 // data transaksi
-Route::group(['middleware' => 'is_admin'], function() {
-    Route::resource('admintransaksi', 'AdmintransaksiController');
-    Route::get('admintransaksi/update', 'AdmintransaksiController@update')->name('admintransaksiupdate');
-    Route::get('admintransaksi/detail', 'AdmintransaksiController@detail')->name('admintransaksidetail');
-    // Route::get('admintransaksipdf', 'AdmintransaksiController@AdmintransaksiPDF')->name('admintransaksiPDF');
-    // Route::get('', '@')->name('admintransaksipdf');
-    // Route::get('admintransaksipdf', function () {
-    //     return view('admin.transaksi.pdf');
-    // });
-    Route::get('admintransaksipdf', [AdmintransaksiController::class, 'generatePDF']);
+Route::group(['middleware' => 'is_admin', 'prefix' => 'admintransaksi'], function() {
+    Route::get('/', [AdmintransaksiController::class,'index'])->name('admintransaksi-index');
+    Route::post('/store', [AdmintransaksiController::class,'store'])->name('admintransaksi-store');
+    Route::get('/create', [AdmintransaksiController::class,'create'])->name('admintransaksi-create');
+    Route::delete('/{id}', [AdmintransaksiController::class,'destroy'])->name('admintransaksi-destroy');
+    Route::put('/{transaksi}', [AdmintransaksiController::class,'update'])->name('admintransaksi-update');
+    Route::get('transaksi/{transaksi}/edit', [AdmintransaksiController::class,'edit'])->name('admintransaksi-edit');
+    Route::get('/{transaksi}/detail',[AdmintransaksiController::class,'detail'])->name('admintransaksi-detail');
+    Route::post('/pdf',[AdmintransaksiController::class,'pdf'])->name('admintransaksi-pdf');
+    // Route::get('admintransaksipdf', [AdmintransaksiController::class, 'generatePDF']);
+    // Route::resource('admintransaksi', 'AdmintransaksiController');
+    // Route::get('admintransaksi/update', 'AdmintransaksiController@update')->name('admintransaksiupdate');
+
 });
+
+
+// PRODUCT
+// Route::get('product', [ProductController::class,'index'])->name('product-index');
+// Route::post('product/store', [ProductController::class,'store'])->name('product-store');
+// Route::get('product/create', [ProductController::class,'create'])->name('product-create');
+// Route::delete('product/{id}', [ProductController::class,'destroy'])->name('product-destroy');
+// Route::put('product/{product}', [ProductController::class,'update'])->name('product-update');
+// // Route::get('product/{id}', [ProductController::class,'show'])->name('product-show');
+// Route::get('product/{product}/edit', [ProductController::class,'edit'])->name('product-edit');
+// END PRODUCT
+
+
+
 
 //landing page
 

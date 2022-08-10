@@ -50,7 +50,7 @@ class IsAdmin
 
         }
 
-        if(auth()->check() && auth()->user()->is_admin == "user"){
+        if(auth()->check() && auth()->user()->is_admin == "penyewa"){
 
             return $next($request);
 

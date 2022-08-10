@@ -16,13 +16,13 @@ class UserSeeder extends Seeder
             [
                 'image'=>'avatar.png',
 
-                'name'=>'admin',
+                'name'=>'aslanadmin',
 
-                'email'=>'admin@gmail.com',
+                'email'=>'aslanadmin@gmail.com',
 
                  'is_admin'=>'admin',
 
-                'password'=> bcrypt('admin'),
+                'password'=> bcrypt('aslanadmin'),
 
             ],
 
@@ -30,26 +30,26 @@ class UserSeeder extends Seeder
 
                'image'=>'avatar.png',
 
-               'name'=>'reservator',
+               'name'=>'aslanreservator',
 
-               'email'=>'reservator@gmail.com',
+               'email'=>'aslanreservator@gmail.com',
 
                 'is_admin'=>'reservator',
 
-               'password'=> bcrypt('reservator'),
+               'password'=> bcrypt('aslanreservator'),
 
             ],
             [
 
                'image'=>'avatar.png',
 
-               'name'=>'kepalapuskesmas',
+               'name'=>'aslankepalapuskesmas',
 
-               'email'=>'kepalapuskesmas@gmail.com',
+               'email'=>'aslankepalapuskesmas@gmail.com',
 
                 'is_admin'=>'kepalapuskesmas',
 
-               'password'=> bcrypt('kepalapuskesmas'),
+               'password'=> bcrypt('aslankepalapuskesmas'),
 
             ],
 
@@ -57,13 +57,13 @@ class UserSeeder extends Seeder
 
                'image'=>'avatar.png',
 
-               'name'=>'penyewa',
+               'name'=>'aslanpenyewa',
 
-               'email'=>'penyewa@gmail.com',
+               'email'=>'aslanpenyewa@gmail.com',
 
                 'is_admin'=>'user',
 
-               'password'=> bcrypt('penyewa'),
+               'password'=> bcrypt('aslanpenyewa'),
 
             ],
 

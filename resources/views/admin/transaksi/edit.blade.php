@@ -22,7 +22,7 @@
         <div class="col-md-12">
             <div class="card border-0 shadow rounded">
                 <div class="card-body">
-                    <form action="{{ route('admintransaksiupdate', $transaksi->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admintransaksi-update', $transaksi->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -40,7 +40,7 @@
 
                         <div class="form-group">
                             <label class="font-weight-bold">No KTP</label>
-                            <input type="text" class="form-control @error('noktp') is-invalid @enderror" name="noktp" value="{{ old('noktp', $transaksi->first()->noktp) }}" placeholder="Masukkan No KTP">
+                            <input type="text" class="form-control @error('noktp') is-invalid @enderror" name="noktp" value="{{ old('noktp', $transaksi->noktp) }}" placeholder="Masukkan No KTP">
 
                             <!-- error message untuk title -->
                             @error('noktp')
@@ -52,7 +52,7 @@
 
                         <div class="form-group">
                             <label class="font-weight-bold">Nama</label>
-                            <input type="text" class="form-control @error('namapenyewa') is-invalid @enderror" name="namapenyewa" value="{{ old('namapenyewa', $transaksi->first()->namapenyewa) }}" placeholder="Masukkan Nama">
+                            <input type="text" class="form-control @error('namapenyewa') is-invalid @enderror" name="namapenyewa" value="{{ old('namapenyewa', $transaksi->namapenyewa) }}" placeholder="Masukkan Nama">
 
                             <!-- error message untuk title -->
                             @error('namapenyewa')
@@ -64,7 +64,7 @@
 
                         <div class="form-group">
                             <label class="font-weight-bold">No HP</label>
-                            <input type="text" class="form-control @error('nohppenyewa') is-invalid @enderror" name="nohppenyewa" value="{{ old('nohppenyewa', $transaksi->first()->nohppenyewa ) }}" placeholder="Masukkan No HP">
+                            <input type="text" class="form-control @error('nohppenyewa') is-invalid @enderror" name="nohppenyewa" value="{{ old('nohppenyewa', $transaksi->nohppenyewa ) }}" placeholder="Masukkan No HP">
 
                             <!-- error message untuk title -->
                             @error('nohppenyewa')
@@ -76,7 +76,7 @@
 
                         <div class="form-group">
                             <label class="font-weight-bold">Email</label>
-                            <input type="text" class="form-control @error('emailpenyewa') is-invalid @enderror" name="emailpenyewa" value="{{ old('emailpenyewa', $transaksi->first()->emailpenyewa) }}" placeholder="Masukkan email  ">
+                            <input type="text" class="form-control @error('emailpenyewa') is-invalid @enderror" name="emailpenyewa" value="{{ old('emailpenyewa', $transaksi->emailpenyewa) }}" placeholder="Masukkan email  ">
 
                             <!-- error message untuk title -->
                             @error('emailpenyewa')
@@ -88,7 +88,7 @@
 
                         <div class="form-group">
                             <label class="font-weight-bold">Alamat</label>
-                            <input type="text" class="form-control @error('alamatpenyewa') is-invalid @enderror" name="alamatpenyewa" value="{{ old('alamatpenyewa', $transaksi->first()->alamatpenyewa) }}" placeholder="Masukkan Alamat  ">
+                            <input type="text" class="form-control @error('alamatpenyewa') is-invalid @enderror" name="alamatpenyewa" value="{{ old('alamatpenyewa', $transaksi->alamatpenyewa) }}" placeholder="Masukkan Alamat  ">
 
                             <!-- error message untuk title -->
                             @error('emailpenyewa')
@@ -100,7 +100,7 @@
 
                         <div class="form-group">
                             <label class="font-weight-bold">Tanggal Dari</label>
-                            <input type="date" class="form-control @error('tanggalpemakaiandari') is-invalid @enderror" name="tanggalpemakaiandari" value="{{ old('tanggalpemakaiandari', $transaksi->first()->tanggalpemakaiandari) }}" placeholder="Masukkan Tanggal Dari  ">
+                            <input type="date" class="form-control @error('tanggalpemakaiandari') is-invalid @enderror" name="tanggalpemakaiandari" value="{{ old('tanggalpemakaiandari', $transaksi->tanggalpemakaiandari) }}" placeholder="Masukkan Tanggal Dari  ">
 
                             <!-- error message untuk title -->
                             @error('tanggalpemakaiandari')
@@ -112,7 +112,7 @@
 
                         <div class="form-group">
                             <label class="font-weight-bold">Tanggal Sampai</label>
-                            <input type="date" class="form-control @error('tanggalpemakaiansampai') is-invalid @enderror" name="tanggalpemakaiansampai" value="{{ old('tanggalpemakaiansampai', $transaksi->first()->tanggalpemakaiansampai) }}" placeholder="Masukkan Tanggal Sampai  ">
+                            <input type="date" class="form-control @error('tanggalpemakaiansampai') is-invalid @enderror" name="tanggalpemakaiansampai" value="{{ old('tanggalpemakaiansampai', $transaksi->tanggalpemakaiansampai) }}" placeholder="Masukkan Tanggal Sampai  ">
 
                             <!-- error message untuk title -->
                             @error('tanggalpemakaiansampai')
@@ -124,7 +124,7 @@
 
                         <div class="form-group">
                             <label class="font-weight-bold">Ruangan</label>
-                            <input type="text" class="form-control @error('namaruangan') is-invalid @enderror" name="namaruangan" value="{{ old('namaruangan', $transaksi->first()->namaruangan) }}" placeholder="Masukkan Ruangan ">
+                            <input type="text" class="form-control @error('namaruangan') is-invalid @enderror" name="namaruangan" value="{{ old('namaruangan', $transaksi->namaruangan) }}" placeholder="Masukkan Ruangan ">
 
                             <!-- error message untuk title -->
                             @error('namaruangan')
@@ -136,7 +136,7 @@
 
                         <div class="form-group">
                             <label class="font-weight-bold">Keperluan</label>
-                            <input type="text" class="form-control @error('keperluan') is-invalid @enderror" name="keperluan" value="{{ old('keperluan', $transaksi->first()->keperluan) }}" placeholder="Masukkan Keperluan ">
+                            <input type="text" class="form-control @error('keperluan') is-invalid @enderror" name="keperluan" value="{{ old('keperluan', $transaksi->keperluan) }}" placeholder="Masukkan Keperluan ">
 
                             <!-- error message untuk title -->
                             @error('keperluan')
@@ -147,20 +147,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="font-weight-bold">Diskon</label>
-                            <input type="text" class="form-control @error('diskon') is-invalid @enderror" name="diskon" value="{{ old('diskon', $transaksi->first()->diskon) }}" placeholder="Masukkan Diskon ">
-
-                            <!-- error message untuk title -->
-                            @error('diskon')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
                             <label class="font-weight-bold">Total Bayar</label>
-                            <input type="text" class="form-control @error('totalbayar') is-invalid @enderror" name="totalbayar" value="{{ old('totalbayar', $transaksi->first()->totalbayar) }}" placeholder="Masukkan Total Bayar  ">
+                            <input type="text" class="form-control @error('totalbayar') is-invalid @enderror" name="totalbayar" value="{{ old('totalbayar', $transaksi->totalbayar) }}" placeholder="Masukkan Total Bayar  ">
 
                             <!-- error message untuk title -->
                             @error('totalbayar')

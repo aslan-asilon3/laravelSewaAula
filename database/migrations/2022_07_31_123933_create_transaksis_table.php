@@ -15,7 +15,8 @@ class CreateTransaksisTable extends Migration
     {
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
+            // $table->unsignedBigInteger('id_user');
+            $table->string('image')->default('avatar.jpg');
             $table->string('noktp')->default('7432309234298412');
             $table->string('namapenyewa');
             $table->string('nohppenyewa')->default('085243070700');
@@ -24,11 +25,12 @@ class CreateTransaksisTable extends Migration
             $table->date('tanggalpemakaiandari');
             $table->date('tanggalpemakaiansampai');
             $table->enum('namaruangan', ['Aula-Utama-I','Aula-Utama-II']);
-            $table->enum('keperluan', ['wisuda/yudisium','test/ujian','seminar','rapat/pertemuan','perpisahan','pentas seni','bimtek/diklat']);
-            $table->integer('diskon')->default(0);
-            $table->integer('totalbayar')->default(0);
+            $table->enum('keperluan', ['wisuda/yudisium','test/ujian','rapat/pertemuan','perpisahan','pentas seni','bimtek/diklat','pernikahan','seminar']);
+            $table->integer('totalbayar')->default(2500000);
             $table->string('keterangan');
             $table->timestamps();
+
+            // $table->foreign('id_user')->references('id')->on('users');
         });
     }
 

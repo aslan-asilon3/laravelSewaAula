@@ -6,6 +6,8 @@ use App\Models\transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use PDF;
+use DB;
+use Carbon\Carbon;
 
 class AdmintransaksiController extends Controller
 {
@@ -28,7 +30,7 @@ class AdmintransaksiController extends Controller
         public function store(Request $request)
         {
             $this->validate($request, [
-                'image'     => 'required|image|mimes:png,jpg,jpeg',
+                'image'     => 'image|mimes:png,jpg,jpeg',
                 'noktp'     => 'required',
                 'namapenyewa'   => 'required',
                 'nohppenyewa'   => 'required',
@@ -38,14 +40,14 @@ class AdmintransaksiController extends Controller
                 'tanggalpemakaiansampai'   => 'required',
                 'namaruangan'   => 'required',
                 'keperluan'   => 'required',
-                'diskon'   => '',
-                'totalbayar'   => '',
+                'diskon'   => 'required',
+                'totalbayar'   => 'required',
                 'keterangan'   => 'required',
             ]);
 
-            //upload image
+            // upload image
             $image = $request->file('image');
-            $image->storeAs('public/transaksis', $image->hashName());
+            $image->storeAs('public/transaksiimage', $image->hashName());
 
             $transaksi = Transaksi::create([
                 'image'     => $image->hashName(),
@@ -58,17 +60,16 @@ class AdmintransaksiController extends Controller
                 'tanggalpemakaiansampai'   => $request->tanggalpemakaiansampai,
                 'namaruangan'   => $request->namaruangan,
                 'keperluan'   => $request->keperluan,
-                'diskon'   => $request->diskon,
                 'totalbayar'   => $request->totalbayar,
                 'keterangan'   => $request->keterangan,
             ]);
 
             if($transaksi){
                 //redirect dengan pesan sukses
-                return redirect()->route('admintransaksi.index')->with(['success' => 'Data Berhasil Disimpan!']);
+                return redirect()->route('admintransaksi-index')->with(['success' => 'Data Berhasil Disimpan!']);
             }else{
                 //redirect dengan pesan error
-                return redirect()->route('admintransaksi.index')->with(['error' => 'Data Gagal Disimpan!']);
+                return redirect()->route('admintransaksi-index')->with(['error' => 'Data Gagal Disimpan!']);
             }
         }
 
@@ -77,6 +78,7 @@ class AdmintransaksiController extends Controller
         public function edit(Transaksi $transaksi)
         {
             return view('admin.transaksi.edit', compact('transaksi'));
+            // return view('admin.transaksi.detail', compact('transaksi'));
         }
 
 
@@ -92,13 +94,12 @@ class AdmintransaksiController extends Controller
             'tanggalpemakaiansampai'   => 'required',
             'namaruangan'   => 'required',
             'keperluan'   => 'required',
-            'diskon'   => 'required',
             'totalbayar'   => 'required',
             'keterangan'   => 'required',
         ]);
 
         //get data Blog by ID
-        $transaksi = Transaksi::findOrFail($transaksi->first()->id);
+        $transaksi = Transaksi::findOrFail($transaksi->id);
 
         if($request->file('image') == "") {
 
@@ -112,7 +113,6 @@ class AdmintransaksiController extends Controller
                 'tanggalpemakaiansampai'   => $request->tanggalpemakaiansampai,
                 'namaruangan'   => $request->namaruangan,
                 'keperluan'   => $request->keperluan,
-                'diskon'   => $request->diskon,
                 'totalbayar'   => $request->totalbayar,
                 'keterangan'   => $request->keterangan,
             ]);
@@ -137,7 +137,6 @@ class AdmintransaksiController extends Controller
                 'tanggalpemakaiansampai'   => $request->tanggalpemakaiansampai,
                 'namaruangan'   => $request->namaruangan,
                 'keperluan'   => $request->keperluan,
-                'diskon'   => $request->diskon,
                 'totalbayar'   => $request->totalbayar,
                 'keterangan'   => $request->keterangan,
             ]);
@@ -146,10 +145,10 @@ class AdmintransaksiController extends Controller
 
         if($transaksi){
             //redirect dengan pesan sukses
-            return redirect()->route('admintransaksi.index')->with(['success' => 'Data Berhasil Diupdate!']);
+            return redirect()->route('admintransaksi-index')->with(['success' => 'Data Berhasil Diupdate!']);
         }else{
             //redirect dengan pesan error
-            return redirect()->route('admintransaksi.index')->with(['error' => 'Data Gagal Diupdate!']);
+            return redirect()->route('admintransaksi-index')->with(['error' => 'Data Gagal Diupdate!']);
         }
     }
 
@@ -168,42 +167,28 @@ class AdmintransaksiController extends Controller
         }
         }
 
-        public function show(Transaksi $transaksi)
+        public function show($memberID)
         {
-            return view('admin.transaksi.detail', compact('transaksi'));
+            $transaksi= Transaksi::find($memberID); //This will fetch the respective record from the table.
+            return view('admin.transaksi.detail',compact('transaksi'));
         }
 
-        public function detail()
+        public function detail(Transaksi $transaksi)
         {
-            return view('admin.transaksi.detail');
+            // $transaksi= Transaksi::find($transaksi)->get()->first(); //This will fetch the respective record from the table.
+
+            return view('admin.transaksi.detail',compact('transaksi'));
+            
         }
-
-        public function generatePDF()
+        
+        public function pdf(Transaksi $transaksi)
         {
-
-            // $transaksi = Transaksi::create([
-            //     // 'image'     => $image->hashName(),
-            //     'noktp'     => $request->noktp,
-            //     'namapenyewa'   => $request->namapenyewa,
-            //     'nohppenyewa'   => $request->nohppenyewa,
-            //     'emailpenyewa'   => $request->emailpenyewa,
-            //     'alamatpenyewa'   => $request->alamatpenyewa,
-            //     'tanggalpemakaiandari'   => $request->tanggalpemakaiandari,
-            //     'tanggalpemakaiansampai'   => $request->tanggalpemakaiansampai,
-            //     'namaruangan'   => $request->namaruangan,
-            //     'keperluan'   => $request->keperluan,
-            //     'diskon'   => $request->diskon,
-            //     'totalbayar'   => $request->totalbayar,
-            //     'keterangan'   => $request->keterangan,
-            // ]);
-
-            $transaksi = Transaksi::all();
-            $pdf = PDF::loadView('admin.transaksi.pdf');
-
-            return $pdf->download('Laporan-Transaksi.pdf');
-
-            return redirect()->route('admintransaksi', 'transaksi');
-
+            // $transaksi = Transaksi::findOrFail($transaksi->id);
+            
+            // // // dd($transaksi);
+            // $pdf = PDF::loadview('admin/transaksi/pdf',['transaksi'=>$transaksi])->setPaper('a4', 'landscape');
+            // return $pdf->download('laporan-transaksi-pdf');
+            // return view('admin.transaksi.pdf',compact('transaksi'));
         }
 
 }

@@ -12,7 +12,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Transaksi</h1>
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+        class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
 
     <!-- Content Row -->
@@ -21,7 +21,7 @@
         <div class="col-md-12">
             <div class="card border-0 shadow rounded">
                 <div class="card-body">
-                    <a href="{{ route('admintransaksi.create') }}" class="btn btn-md btn-success mb-3">TAMBAH </a>
+                    <a href="{{ route('admintransaksi-create') }}" class="btn btn-md btn-success mb-3">TAMBAH </a>
                     <div style="overflow-x:auto;">
                     <table class="table table-bordered">
                         <thead>
@@ -37,7 +37,6 @@
                             <th scope="col">Tanggal Sampai</th>
                             <th scope="col">Ruangan</th>
                             <th scope="col">Keperluan</th>
-                            <th scope="col">Diskon</th>
                             <th scope="col">Total Bayar</th>
                             <th scope="col">Keterangan</th>
                             <th scope="col">AKSI</th>
@@ -59,13 +58,12 @@
                                 <td>{{ $transaksi->tanggalpemakaiansampai }}</td>
                                 <td>{{ $transaksi->namaruangan }}</td>
                                 <td>{{ $transaksi->keperluan }}</td>
-                                <td>{{ $transaksi->diskon }}</td>
                                 <td>{{ $transaksi->totalbayar }}</td>
                                 <td>{{ $transaksi->keterangan }}</td>
                                 <td class="text-center">
-                                    <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('admintransaksi.destroy', $transaksi->id) }}" method="POST">
-                                        <a href="{{ route('admintransaksidetail', $transaksi->id) }}" class="btn btn-sm btn-primary">DETAIL</a>
-                                        <a href="{{ route('admintransaksi.edit', $transaksi->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                    <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('admintransaksi-destroy', $transaksi->id) }}" method="POST">
+                                        <a href="{{ route('admintransaksi-detail', $transaksi->id) }}" class="btn btn-sm btn-primary">DETAIL</a>
+                                        <a href="{{ route('admintransaksi-edit', $transaksi->id) }}" class="btn btn-sm btn-primary">EDIT</a>
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>

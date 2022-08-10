@@ -17,29 +17,31 @@
 
     <!-- Content Row -->
     <div class="row">
+        {{-- {{
+            $date = Carbon::parse('2021-03-16 08:27:00')->locale('id');
+
+            $date->settings(['formatFunction' => 'translatedFormat']);
+
+            echo $date->format('l, j F Y ; h:i a');
+        }} --}}
 
         <div class="col-md-12">
 
             <div class="card">
                 <div class="card-header"><strong><i class="icon-tasks"></i> Rincian Reservasi</strong></div>
                 <div class="card-body">
-                    <form id="form" method="POST" action="/admintransaksipdf">
+                    <form id="form" method="POST" action="{{ route('admintransaksi-pdf')}}">
                         @method('POST')
                         @csrf
-                        <input type="hidden" name="_token" value="CuodKwgBUcMAouMtXpI0ywZNv91QiZBFtrsiadH3">
-                        <input type="hidden" id="pemesan_ktp" name="noktp" value="{{ old('noktp', $transaksi->first()->noktp) }}">
-                        <input type="hidden" id="pemesan_nama" name="namapenyewa" value="{{ old('namapenyewa', $transaksi->first()->namapenyewa) }}">
-                        <input type="hidden" id="pemesan_telp" name="nohppenyewa" value="{{ old('nohppenyewa', $transaksi->first()->nohppenyewa) }}">
-                        <input type="hidden" id="pemesan_email" name="nohppenyewa" value="{{ old('nohppenyewa', $transaksi->first()->nohppenyewa) }}">
-                        <input type="hidden" id="pemesan_alamat" name="nohppenyewa" value="{{ old('nohppenyewa', $transaksi->first()->nohppenyewa) }}">
-                        <input type="hidden" id="pemakai_nama" name="nohppenyewa" value="{{ old('nohppenyewa', $transaksi->first()->nohppenyewa) }}">
-                        <input type="hidden" id="pemakai_telp" name="nohppenyewa" value="{{ old('nohppenyewa', $transaksi->first()->nohppenyewa) }}">
-                        <input type="hidden" id="dari" name="nohppenyewa" value="{{ old('nohppenyewa', $transaksi->first()->nohppenyewa) }}">
-                        <input type="hidden" id="sampai" name="nohppenyewa" value="{{ old('nohppenyewa', $transaksi->first()->nohppenyewa) }}">
-                        <input type="hidden" id="gedung" name="nohppenyewa" value="{{ old('nohppenyewa', $transaksi->first()->nohppenyewa) }}">
-                        <input type="hidden" id="jumlah" name="nohppenyewa" value="{{ old('nohppenyewa', $transaksi->first()->nohppenyewa) }}">
-                        <input type="hidden" id="keperluan" name="nohppenyewa" value="{{ old('nohppenyewa', $transaksi->first()->nohppenyewa) }}">
-                        <h4 class="mb-1">Ruang Aula Kelas</h4>
+
+                        <a href="" hidden>
+                            {{
+                                $total =  old('pemakaiansampai', $transaksi->pemakaiansampai) -  old('pemakaiandari', $transaksi->pemakaiandari) 
+                            }}
+                        </a>
+  
+
+                        <h4 class="mb-1">Detail Transaksi</h4>
                         <hr />
                         <table width="70%" style="margin-bottom:20px">
                             <tr>
@@ -48,9 +50,10 @@
                                 <th width="50%">Jumlah Hari:</th>
                             </tr>
                             <tr>
-                                <td>{{ old('tanggalpemakaiandari', $transaksi->first()->tanggalpemakaiandari) }}</td>
-                                <td>{{ old('tanggalpemakaiandari', $transaksi->first()->tanggalpemakaiansampai) }}</td>
-                                <td><input type="hidden" value="{{ $selisihhari = strtotime(old('tanggalpemakaiandari', $transaksi->first()->tanggalpemakaiansampai))- strtotime(old('tanggalpemakaiandari', $transaksi->first()->tanggalpemakaiandari))}}"></td>
+                                {{-- <td>{{ $transaksi->pemakaiandari }}</td> --}}
+                                <td>{{ old('tanggalpemakaiandari', $transaksi->tanggalpemakaiandari) }}</td>
+                                <td>{{ old('tanggalpemakaiansampai', $transaksi->tanggalpemakaiansampai) }}</td>
+                                <td><input type="hidden" value="{{ $selisihhari = strtotime(old('tanggalpemakaiandari', $transaksi->tanggalpemakaiansampai))- strtotime(old('tanggalpemakaiandari', $transaksi->tanggalpemakaiandari))}}"></td>
                                 <td>{{ $hari = $selisihhari/60/60/24;}}</td>
                             </tr>
                         </table>
@@ -59,7 +62,7 @@
                                 <th width="50%">Nama Pemesan:</th>
                             </tr>
                             <tr>
-                                <td>{{ old('namapenyewa', $transaksi->first()->namapenyewa) }}</td>
+                                <td>{{ old('namapenyewa', $transaksi->namapenyewa) }}</td>
                             </tr>
                         </table>
                         <table width="70%" style="margin-bottom:20px">
@@ -67,7 +70,7 @@
                                 <th>Keperluan:</th>
                             </tr>
                             <tr>
-                                <td>{{ old('keperluan', $transaksi->first()->keperluan) }}</td>
+                                <td>{{ old('keperluan', $transaksi->keperluan) }}</td>
                             </tr>
                         </table>
                         <table class="table table-bordered" width="100">
@@ -77,19 +80,88 @@
                                 <th width="25%">Total</th>
                             </tr>
                             <tr>
-                                <td>{{ old('harga', $transaksi->first()->harga) }}</td>
+                                {{-- <td>{{ old('harga', $transaksi->harga) }}</td> --}}
+                                <td>{{ old('harga', $transaksi->harga) }}</td>
                                 <td>1 hari</td>
-                                <td>Rp. {{ old('totalbayar', $transaksi->first()->totalbayar) }},-</td>
+                                <td>{{ $total }}</td>
                             </tr>
                             <tr>
                                 <td colspan="2"><strong>Total<strong></td>
-                                <td><strong>Rp. {{ $hasil = old('totalbayar', $transaksi->first()->totalbayar)* $hari }},-</strong></td>
+                                <td><strong>Rp. {{ $hasil = old('totalbayar', $transaksi->totalbayar)* $hari }},-</strong></td>
                             </tr>
                         </table>
-                        <button type="submit" class="btn btn-success">Reservasi</button>
+                        <button type="submit" onclick="window.print()" class="btn btn-success">Print PDF</button>
                     </form>
                 </div>
             </div>
+{{-- 
+            <div class="card " id="print-pdf">
+                <div class="card-header"><strong><i class="icon-tasks"></i> Rincian Reservasi</strong></div>
+                <div class="card-body">
+                    <form id="form" method="POST" action="/admintransaksipdf" hidden>
+                        @method('POST')
+                        @csrf
+
+                        <a href="" hidden>
+                            {{
+                                $total =  old('pemakaiansampai', $transaksi->pemakaiansampai) -  old('pemakaiandari', $transaksi->pemakaiandari) 
+                            }}
+                        </a>
+  
+
+                        <h4 class="mb-1">Ruang Aula Kelas</h4>
+                        <hr />
+                        <table width="70%" style="margin-bottom:20px">
+                            <tr>
+                                <th width="50%">Dari:</th>
+                                <th width="50%">Sampai:</th>
+                                <th width="50%">Jumlah Hari:</th>
+                            </tr>
+                            <tr>
+                                {{-- <td>{{ $transaksi->namapenyewa }}</td> --}}
+                                {{-- <td>{{ old('tanggalpemakaiandari', $transaksi->tanggalpemakaiansampai) }}</td> --}}
+                                {{-- <td><input type="hidden" value="{{ $selisihhari = strtotime(old('tanggalpemakaiandari', $transaksi->tanggalpemakaiansampai))- strtotime(old('tanggalpemakaiandari', $transaksi->tanggalpemakaiandari))}}"></td> --}}
+                                {{-- <td>{{ $hari = $selisihhari/60/60/24;}}</td> --}}
+                            {{-- </tr>
+                        </table>
+                        <table width="70%" style="margin-bottom:20px">
+                            <tr>
+                                <th width="50%">Nama Pemesan:</th>
+                            </tr>
+                            <tr>
+                                <td>{{ old('namapenyewa', $transaksi->namapenyewa) }}</td>
+                            </tr>
+                        </table>
+                        <table width="70%" style="margin-bottom:20px">
+                            <tr>
+                                <th>Keperluan:</th>
+                            </tr>
+                            <tr>
+                                <td>{{ old('keperluan', $transaksi->keperluan) }}</td>
+                            </tr>
+                        </table>
+                        <table class="table table-bordered" width="100">
+                            <tr>
+                                <th width="65%">Harga</th>
+                                <th width="10%">Durasi</th>
+                                <th width="25%">Total</th>
+                            </tr>
+                            <tr>
+                                {{-- <td>{{ old('harga', $transaksi->harga) }}</td> --}}
+                                {{-- <td>{{ old('harga', $transaksi->harga) }}</td>
+                                <td>1 hari</td>
+                                <td>{{ $total }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><strong>Total<strong></td>
+                                {{-- <td><strong>Rp. {{ $hasil = old('totalbayar', $transaksi->totalbayar)* $hari }},-</strong></td> --}}
+                            {{-- </tr>
+                        </table>
+                        <button type="submit" onclick="window.print()" class="btn btn-success">Print PDF</button>
+                    </form>
+                </div> 
+            </div> 
+             --}}
         </div>
         <div class="col_two_fifth col_last">
             <div class="card">
@@ -117,4 +189,11 @@
 
 </div>
 
+<script>
+    //  $("#form").click(function(){
+    //     form.hide()
+    //     // window.print()
+    //     // onclick="window.print()"
+    //     });
+</script>
 @endsection
