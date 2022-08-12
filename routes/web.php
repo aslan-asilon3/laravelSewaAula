@@ -27,18 +27,18 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-// Dashboard
+// Admin Dashboard 
 Route::group(['middleware' => 'is_admin'], function() {
     Route::resource('admindashboard', 'AdmindashboardController');
 });
 
-// kelola akun
+// Admin kelola akun
 Route::group(['middleware' => 'is_admin'], function() {
     Route::resource('adminkelolaakun', 'AdminkelolaakunController');
     Route::get('adminkelolaakun/update', 'AdminKelolaakunController@update')->name('adminkelolaakunupdate');
 });
 
-// data ruang
+// Admin data ruang
 Route::group(['middleware' => 'is_admin'], function() {
     Route::resource('adminruangan', 'AdmindataruangController');
     Route::get('adminruangan/update', 'AdmindataruangController@update')->name('admindataruangupdate');
@@ -47,7 +47,7 @@ Route::group(['middleware' => 'is_admin'], function() {
     // Route::resource('adminruangan', AdmindataruangController::class, ['except' => ['edit']]);
 });
 
-// data transaksi
+// Admin data transaksi
 Route::group(['middleware' => 'is_admin', 'prefix' => 'admintransaksi'], function() {
     Route::get('/', [AdmintransaksiController::class,'index'])->name('admintransaksi-index');
     Route::post('/store', [AdmintransaksiController::class,'store'])->name('admintransaksi-store');

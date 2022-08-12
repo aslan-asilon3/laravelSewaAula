@@ -150,8 +150,8 @@
                     <div class="card">
                         <div class="card-header"><strong><i class="icon-bars"></i> Dasar & Tarif Fasilitas</strong></div>
                         <div class="card-body">
-                            <p>Peraturan Daerah Provinsi Kalimantan Timur Nomor 4 Tahun 2018 tentang Perubahan Atas Peraturan
-                                Daerah Provinsi Kalimantan Timur Nomor 2 Tahun 2012 Tentang Retribursi Jasa Usaha.</p>
+                            <p>Peraturan Daerah Provinsi DKI Jakarta Nomor 4 Tahun 2018 tentang Perubahan Atas Peraturan
+                                Daerah Provinsi DKI Jakarta Nomor 2 Tahun 2012 Tentang Retribursi Jasa Usaha.</p>
         
                             <table class="table table-hover">
                                 <thead>
@@ -294,7 +294,7 @@
                                         <label class="form-check-label" for="setuju" style="text-transform: none; font-weight: 400">
                                             <input class="form-check-input" type="checkbox" name="setuju" id="setuju" required>
                                             Saya menyetujui segala ketentuan dan aturan yang berlaku tentang penyewaan
-                                            fasilitas pada BPSDM Provinsi Kalimantan Timur.
+                                            fasilitas pada Puskesmas kecamatan kemayoran.
                                         </label>
                                     </div>
                                 </div>
@@ -312,7 +312,7 @@
                                         <ol align="justify" style="padding-left: 10px; margin-bottom: 0px">
                                             <li>Penyewaan fasilitas diajukan paling lambat 7 hari kerja sebelum tanggal acara.</li>
                                             <li>Isi formulir disebelah dengan benar termasuk KTP (Kartu Tanda Penduduk), karena akan digunakan pada saat verifikasi.</li>
-                                            <li>Setelah berhasil melakukan pemesanan, lakukan <strong>verifikasi paling lambat 3 hari setelah pemesanan</strong>, dengan cara datang langsung pada jam kerja ke <strong>Ruang Layanan Informasi</strong> BPSDM Provinsi Kalimantan Timur dan menunjukkan <strong>KTP beserta bukti cetak reservasi online</strong>.</li>
+                                            <li>Setelah berhasil melakukan pemesanan, lakukan <strong>verifikasi paling lambat 3 hari setelah pemesanan</strong>, dengan cara datang langsung pada jam kerja ke <strong>Ruang Layanan Informasi</strong> Puskesmas Kecamatan Kemayoran dan menunjukkan <strong>KTP beserta bukti cetak reservasi online</strong>.</li>
                                             <li>Jika dalam waktu 3 hari Anda belum melakukan verifikasi, data pemesanan Anda akan dihapus.</li>
                                             <li>Perubahan tanggal hanya bisa dilakukan 1 kali, paling lambat 3 hari sebelum tanggal acara, dan hanya jika jadwal yang diingkan masih kosong.</li>
                                             <li>Apabila terjadi pembatalan segera hubungi petugas.</li>
