@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Level HTML Template</title>
+    <title>Puskesmas Kecamatan Kemayoran</title>
 
     <!-- load stylesheets -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">  <!-- Google web font "Open Sans" -->
@@ -36,11 +36,11 @@
             <!-- Top Navbar -->
             <div class="container">
                 <div class="row">
-                    
+
                     <nav class="navbar navbar-expand-lg narbar-light">
                         <a class="navbar-brand mr-auto" href="#">
-                            <img src="img/logo.png" alt="Site logo">
-                            Level
+                            <img src="{{asset('assets-landing/logo-DKI.jpg')}}" alt="Site logo" style="height: 50px;width:50px;">
+                            Puskesmas Kecamatan Kemayoran
                         </a>
                         <button type="button" id="nav-toggle" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#mainNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -56,15 +56,15 @@
                               <li class="nav-item">
                                 <a class="nav-link" href="#tm-section-4">Informasi</a>
                               </li>
-                              <li class="nav-item">
+                              {{-- <li class="nav-item">
                                 <a class="nav-link" href="#tm-section-6">Reservasi</a>
-                              </li>
+                              </li> --}}
                               <li class="nav-item">
                                 <a class="nav-link" href="/login">Login</a>
                               </li>
                             </ul>
-                        </div>                            
-                    </nav>            
+                        </div>
+                    </nav>
                 </div>
             </div>
         </div>
@@ -81,12 +81,12 @@
                                 </h2>
 
                             </div>
-                        </div>                        
-                    </div>      
+                        </div>
+                    </div>
                 </div>
-            </div>                  
+            </div>
         </div>
-        
+
         <div class="tm-section-2">
             <div class="container">
                 <div class="row">
@@ -94,15 +94,15 @@
                         <h2 class="tm-section-title">Reservasi Sekarang !</h2>
                         <p class="tm-color-white tm-section-subtitle">.</p>
                         <a href="#tm-section-6"class="tm-color-white tm-btn-white-bordered">Reservasi</a>
-                    </div>                
+                    </div>
                 </div>
-            </div>        
+            </div>
         </div>
-        
+
         <div class="tm-section tm-position-relative">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="tm-section-down-arrow">
-                <polygon fill="#ee5057" points="0,0  100,0  50,60"></polygon>                   
-            </svg> 
+                <polygon fill="#ee5057" points="0,0  100,0  50,60"></polygon>
+            </svg>
             <div class="container tm-pt-5 tm-pb-4" id="tm-section-3">
                 <div class="card">
                     <div class="card-header"><strong><i class="icon-bars"></i> Cek Jadwal</strong></div>
@@ -121,7 +121,7 @@
                             </thead>
                             <tbody>
 
-                                @forelse ($transaksis as $transaksi)
+                                {{-- @forelse ($transaksis as $transaksi)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $transaksi->namapenyewa }}</td>
@@ -135,24 +135,24 @@
                                   <div class="alert alert-danger">
                                       Data  belum Tersedia.
                                   </div>
-                              @endforelse
-                                
+                              @endforelse --}}
+
                             </tbody>
                         </table>
                     </div>
-                </div>  
+                </div>
             </div>
         </div>
-        
+
         <div class="tm-section tm-section-pad tm-bg-gray" id="tm-section-4">
             <div class="container">
                 <div class="row">
                     <div class="card">
                         <div class="card-header"><strong><i class="icon-bars"></i> Dasar & Tarif Fasilitas</strong></div>
                         <div class="card-body">
-                            <p>Peraturan Daerah Provinsi DKI Jakarta Nomor 4 Tahun 2018 tentang Perubahan Atas Peraturan
-                                Daerah Provinsi DKI Jakarta Nomor 2 Tahun 2012 Tentang Retribursi Jasa Usaha.</p>
-        
+                            <p>Peraturan Daerah Provinsi DKI Nomor 4 Tahun 2018 tentang Perubahan Atas Peraturan
+                                Daerah Provinsi DKI Nomor 2 Tahun 2012 Tentang Retribursi Jasa Usaha.</p>
+
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -170,7 +170,7 @@
                                                                 <tr>
                                         <td>2</td>
                                         <td>Aula Utama II</td>
-                                        <td>Rp. 2.000.000 / hari</td>
+                                        <td>Rp. 2.500.000 / hari</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -180,17 +180,17 @@
             </div>
         </div>
 
-            
-            <div class="tm-section tm-section-pad tm-bg-img" id="tm-section-5">                                                        
+
+            <div class="tm-section tm-section-pad tm-bg-img" id="tm-section-5">
                 <div class="container ie-h-align-center-fix">
                     <div class="row tm-flex-align-center">
 
                     </div>
                 </div>
             </div>
-        </div>           
-        
-        <div class="tm-section tm-section-pad tm-bg-img tm-position-relative" id="tm-section-6">
+        </div>
+
+        {{-- <div class="tm-section tm-section-pad tm-bg-img tm-position-relative" id="tm-section-6">
             <div class="container ie-h-align-center-fix">
                 <div class="row" style="width: 200%">
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-5 mt-3 mt-md-0">
@@ -300,7 +300,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div data-sitekey="6LcFYZIUAAAAAIdbjcpu-vHnlpYIsiGLiBL6GTY4" class="g-recaptcha"></div>
-                                </div>                        
+                                </div>
                                 <button type="submit" class="button button-3d">Lanjut</button>
                             </form>
 
@@ -318,23 +318,23 @@
                                             <li>Apabila terjadi pembatalan segera hubungi petugas.</li>
                                         </ol>
                                 </div>
-                            </div>  
+                            </div>
 
-                        </div>                            
+                        </div>
                     </div>
-                </div>        
+                </div>
             </div>
-        </div>
-        
+        </div> --}}
+
         <footer class="tm-bg-dark-blue">
             <div class="container">
                 <div class="row">
                     <p class="col-sm-12 text-center tm-font-light tm-color-white p-4 tm-margin-b-0">
                     Copyright &copy; <span class="tm-current-year">2018</span> Your Company
-                    
-                    - Design: Tooplate</p>        
+
+                    - Design: Tooplate</p>
                 </div>
-            </div>                
+            </div>
         </footer>
     </div>
         </div>
@@ -343,10 +343,10 @@
             <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
-        
+
         <!-- load JS files -->
         <script src="{{ asset('js/jquery-1.11.3.min.js')}}"></script>             <!-- jQuery (https://jquery.com/download/) -->
-        <script src="{{ asset('js/popper.min.js')}}"></script>                    <!-- https://popper.js.org/ -->       
+        <script src="{{ asset('js/popper.min.js')}}"></script>                    <!-- https://popper.js.org/ -->
         <script src="{{ asset("js/bootstrap.min.js")}}"></script>                 <!-- https://getbootstrap.com/ -->
         <script src="{{ asset('js/datepicker.min.js')}}"></script>                <!-- https://github.com/qodesmith/datepicker -->
         <script src="{{ asset('js/jquery.singlePageNav.min.js')}}"></script>      <!-- Single Page Nav (https://github.com/ChrisWojcik/single-page-nav) -->
@@ -385,13 +385,13 @@
                 script.type = 'text/javascript';
                 script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDVWt4rJfibfsEDvcuaChUaZRS5NXey1Cs&v=3.exp&sensor=false&' + 'callback=initialize';
                 document.body.appendChild(script);
-            } 
+            }
 
             function setCarousel() {
-                
+
                 if ($('.tm-article-carousel').hasClass('slick-initialized')) {
                     $('.tm-article-carousel').slick('destroy');
-                } 
+                }
 
                 if($(window).width() < 438){
                     // Slick carousel
@@ -408,7 +408,7 @@
                         dots: true,
                         slidesToShow: 2,
                         slidesToScroll: 1
-                    });   
+                    });
                 }
             }
 
@@ -417,13 +417,13 @@
                     $('#tm-top-bar').singlePageNav({
                         currentClass:'active',
                         offset: 79
-                    });   
+                    });
                 }
                 else {
                     $('#tm-top-bar').singlePageNav({
                         currentClass:'active',
                         offset: 65
-                    });   
+                    });
                 }
             }
 
@@ -438,10 +438,10 @@
                 else {
                     vid.pause();
                     $('.tm-btn-play').show();
-                    $('.tm-btn-pause').hide();   
-                }  
+                    $('.tm-btn-pause').hide();
+                }
             }
-       
+
             $(document).ready(function(){
 
                 $(window).on("scroll", function() {
@@ -451,15 +451,15 @@
                         //remove the background property so it comes transparent again (defined in your css)
                        $(".tm-top-bar").removeClass("active");
                     }
-                });      
+                });
 
                 // Google Map
-                loadGoogleMap();  
+                loadGoogleMap();
 
                 // Date Picker
                 const pickerCheckIn = datepicker('#inputCheckIn');
                 const pickerCheckOut = datepicker('#inputCheckOut');
-                
+
                 // Slick carousel
                 setCarousel();
                 setPageNav();
@@ -476,18 +476,18 @@
 
                 // Control video
                 $('.tm-btn-play').click(function() {
-                    togglePlayPause();                                      
+                    togglePlayPause();
                 });
 
                 $('.tm-btn-pause').click(function() {
-                    togglePlayPause();                                      
+                    togglePlayPause();
                 });
 
                 // Update the current year in copyright
-                $('.tm-current-year').text(new Date().getFullYear());                           
+                $('.tm-current-year').text(new Date().getFullYear());
             });
 
-        </script>             
+        </script>
 
 </body>
 </html>

@@ -46,35 +46,14 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item @yield('active')">
-                <a class="nav-link" href="admindashboard">
+                <a class="nav-link" href="penyewadashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item  @yield('active')" id="sidebar-kelolaakun">
-                <a class="nav-link" href="adminkelolaakun">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Kelola Akun</span></a>
-            </li>
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item sidebar-ruangan @yield('active')">
-                <a class="nav-link" href="adminruangan">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Ruangan</span></a>
-            </li>
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item sidebar-transaksi @yield('active')">
-                <a class="nav-link" href="admintransaksi">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Transaksi</span></a>
-            </li>
-
-            <!-- Nav Item - Dashboard -->
             <li class="nav-item sidebar-laporan @yield('active')">
-                <a class="nav-link" href="{{route('adminlaporan-index')}}">
+                <a class="nav-link" href="{{route('penyewalaporan-index')}}">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Laporan</span></a>
             </li>
@@ -162,14 +141,9 @@
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
                                 </a>
-<<<<<<< HEAD
-                                <a class="dropdown-item" href="/home">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-=======
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/home" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="/home" data-toggle="modal" data-target="">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
->>>>>>> cce4189b8cf04f95a3c6d1fdbaa7b83c9c85ef55
                                     Logout
                                 </a>
                             </div>

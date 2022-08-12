@@ -1,8 +1,8 @@
-@extends('layouts.app-admin')
-
-@section('title','Kelola Akun')
+@extends('layouts.app-kepalapuskesmas')
 
 @section('active','active')
+
+@section('title','Transaksi')
 
 @section('content')
 
@@ -10,7 +10,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Kelola Akun</h1>
+        <h1 class="h3 mb-0 text-gray-800">kepalapuskesmas / Laporan</h1> 
 
     </div>
 
@@ -20,34 +20,27 @@
         <div class="col-md-12">
             <div class="card border-0 shadow rounded">
                 <div class="card-body">
-                    <a href="{{ route('adminkelolaakun.create') }}" class="btn btn-md btn-success mb-3">TAMBAH </a>
+                    {{-- <a href="{{ route('admintransaksi-create') }}" class="btn btn-md btn-success mb-3">TAMBAH </a> --}}
+                    <div style="overflow-x:auto;">
                     <table class="table table-bordered">
                         <thead>
                           <tr>
                             <th scope="col">No</th>
                             <th scope="col">Image</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Status</th>
+                            <th scope="col">Nama</th>
                             <th scope="col">AKSI</th>
                           </tr>
                         </thead>
                         <tbody>
-                          @forelse ($users as $user)
+                          @forelse ($transaksis as $transaksi)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td class="text-center">
-                                    <img src="{{ Storage::url('public/users/').$user->image }}" class="rounded" style="width: 50px">
+                                    <img src="{{ Storage::url('public/users/').$transaksi->image }}" class="rounded" style="width: 50px">
                                 </td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->is_admin }}</td>
+                                <td>{{ $transaksi->namapenyewa }}</td>
                                 <td class="text-center">
-                                    <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('adminkelolaakun.destroy', $user->id) }}" method="POST">
-                                        <a href="{{ route('adminkelolaakun.edit', $user->id) }}" class="btn btn-sm btn-primary">EDIT</a>
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                                        <a href="{{ route('admintransaksi-detail', $transaksi->id) }}" class="btn btn-sm btn-primary">LAPORAN</a>
                                     </form>
                                 </td>
                             </tr>
@@ -58,7 +51,8 @@
                           @endforelse
                         </tbody>
                       </table>
-                      {{ $users->links() }}
+                      {{ $transaksis->links() }}
+                  </div>
                 </div>
             </div>
         </div>

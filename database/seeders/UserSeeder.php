@@ -61,7 +61,7 @@ class UserSeeder extends Seeder
 
                'email'=>'aslanpenyewa@gmail.com',
 
-                'is_admin'=>'user',
+                'is_admin'=>'penyewa',
 
                'password'=> bcrypt('aslanpenyewa'),
 

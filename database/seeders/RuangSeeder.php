@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Ruang;
 
 class RuangSeeder extends Seeder
 {
@@ -14,5 +15,26 @@ class RuangSeeder extends Seeder
     public function run()
     {
         //
+        $ruangan = [
+            [
+                'image'         =>'avatar.png',
+                'namaruangan'   =>'Aula-Utama-I',
+            ],
+            [
+                'image'         =>'avatar.png',
+                'namaruangan'   =>'Aula-Utama-II',
+            ],
+
+
+
+        ];
+
+
+
+        foreach ($ruangan as $key => $value) {
+
+            Ruang::create($value);
+
+        }
     }
 }

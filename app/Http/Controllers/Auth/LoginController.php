@@ -66,7 +66,7 @@ class LoginController extends Controller
             }
             elseif(auth()->user()->is_admin == "reservator") {
 
-                return redirect('reservator');
+                return redirect('reservatordashboard');
             }
             elseif(auth()->user()->is_admin == "kepalapuskesmas") {
 

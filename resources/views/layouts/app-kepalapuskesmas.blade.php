@@ -15,7 +15,7 @@
     <title>@yield('title')</title>
 
     <!-- Custom fonts for this template-->
-    <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{ asseturl('assets/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -46,35 +46,14 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item @yield('active')">
-                <a class="nav-link" href="admindashboard">
+                <a class="nav-link" href="{{url('kepalapuskesmasdashboard-index')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item  @yield('active')" id="sidebar-kelolaakun">
-                <a class="nav-link" href="adminkelolaakun">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Kelola Akun</span></a>
-            </li>
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item sidebar-ruangan @yield('active')">
-                <a class="nav-link" href="adminruangan">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Ruangan</span></a>
-            </li>
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item sidebar-transaksi @yield('active')">
-                <a class="nav-link" href="admintransaksi">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Transaksi</span></a>
-            </li>
-
-            <!-- Nav Item - Dashboard -->
             <li class="nav-item sidebar-laporan @yield('active')">
-                <a class="nav-link" href="{{route('adminlaporan-index')}}">
+                <a class="nav-link" href="{{route('kepalapuskesmaslaporan-index')}}">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Laporan</span></a>
             </li>
@@ -162,14 +141,9 @@
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
                                 </a>
-<<<<<<< HEAD
-                                <a class="dropdown-item" href="/home">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-=======
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/home" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="/home" data-toggle="modal" data-target="">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
->>>>>>> cce4189b8cf04f95a3c6d1fdbaa7b83c9c85ef55
                                     Logout
                                 </a>
                             </div>
@@ -230,21 +204,21 @@
     </div> --}}
 
     <!-- Bootstrap core JavaScript-->
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{url('assets/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="{{url('assets/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="assets/js/sb-admin-2.min.js"></script>
+    <script src="{{url('assets/js/sb-admin-2.min.js')}}"></script>
 
     <!-- Page level plugins -->
-    <script src="assets/vendor/chart.js/Chart.min.js"></script>
+    <script src="{{url('assets/vendor/chart.js/Chart.min.js')}}"></script>
 
     <!-- Page level custom scripts -->
-    <script src="assets/js/demo/chart-area-demo.js"></script>
-    <script src="assets/js/demo/chart-pie-demo.js"></script>
+    <script src="{{url('assets/js/demo/chart-area-demo.js')}}"></script>
+    <script src="{{url('assets/js/demo/chart-pie-demo.js')}}"></script>
 
     {{-- <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
     <script>

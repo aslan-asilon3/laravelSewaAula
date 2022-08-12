@@ -1,4 +1,4 @@
-@extends('layouts.app-admin')
+@extends('layouts.app-reservator')
 
 @section('active','active')
 
@@ -10,7 +10,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Transaksi</h1>
+        <h1 class="h3 mb-0 text-gray-800">Reservator / Transaksi</h1>
 
     </div>
 
@@ -20,7 +20,7 @@
         <div class="col-md-12">
             <div class="card border-0 shadow rounded">
                 <div class="card-body">
-                    <a href="{{ route('admintransaksi-create') }}" class="btn btn-md btn-success mb-3">TAMBAH </a>
+                    <a href="{{ route('reservatortransaksi-create') }}" class="btn btn-md btn-success mb-3">TAMBAH </a>
                     <div style="overflow-x:auto;">
                     <table class="table table-bordered">
                         <thead>
