@@ -46,35 +46,21 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item @yield('active')">
-                <a class="nav-link" href="admindashboard">
+                <a class="nav-link" href="reservatordashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item  @yield('active')" id="sidebar-kelolaakun">
-                <a class="nav-link" href="adminkelolaakun">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Kelola Akun</span></a>
-            </li>
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item sidebar-ruangan @yield('active')">
-                <a class="nav-link" href="adminruangan">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Ruangan</span></a>
-            </li>
-
-            <!-- Nav Item - Dashboard -->
             <li class="nav-item sidebar-transaksi @yield('active')">
-                <a class="nav-link" href="admintransaksi">
+                <a class="nav-link" href="{{ route('reservatortransaksi-index') }}">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Transaksi</span></a>
             </li>
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item sidebar-laporan @yield('active')">
-                <a class="nav-link" href="{{route('adminlaporan-index')}}">
+                <a class="nav-link" href="{{route('reservatorlaporan-index')}}">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Laporan</span></a>
             </li>

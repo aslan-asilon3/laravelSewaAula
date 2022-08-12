@@ -59,7 +59,7 @@
             <div class="card">
                 <div class="card-header"><strong><i class="icon-tasks"></i> Rincian Reservasi</strong></div>
                 <div class="card-body">
-                    <form id="form" method="POST" action="{{ route('admintransaksi-pdf')}}">
+                    <form id="form" method="POST" action="">
                         @method('POST')
                         @csrf
 
