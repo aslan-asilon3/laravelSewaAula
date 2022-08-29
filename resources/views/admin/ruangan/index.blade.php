@@ -18,7 +18,7 @@
         <div class="col-md-12">
             <div class="card border-0 shadow rounded">
                 <div class="card-body">
-                    <a href="{{ route('adminkelolaakun.create') }}" class="btn btn-md btn-success mb-3">TAMBAH </a>
+                    <a href="{{ route('admindataruangan-create') }}" class="btn btn-md btn-success mb-3">TAMBAH </a>
                     <table class="table table-bordered">
                         <thead>
                           <tr>
@@ -41,8 +41,8 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->is_admin }}</td>
                                 <td class="text-center">
-                                    <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('adminkelolaakun.destroy', $user->id) }}" method="POST">
-                                        <a href="{{ route('adminkelolaakun.edit', $user->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                    <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('adminkelolaakun-destroy', $user->id) }}" method="POST">
+                                        <a href="{{ route('adminkelolaakun-edit', $user->id) }}" class="btn btn-sm btn-primary">EDIT</a>
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>

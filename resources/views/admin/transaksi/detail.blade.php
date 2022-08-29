@@ -59,17 +59,14 @@
             <div class="card">
                 <div class="card-header"><strong><i class="icon-tasks"></i> Rincian Reservasi</strong></div>
                 <div class="card-body">
-                    <form id="form" method="POST" action="{{ route('admintransaksi-pdf')}}">
+                    <form id="form" method="POST" action="">
                         @method('POST')
                         @csrf
-
                         <a href="" hidden>
                             {{
                                 $total =  old('pemakaiansampai', $transaksi->pemakaiansampai) -  old('pemakaiandari', $transaksi->pemakaiandari)
                             }}
                         </a>
-
-
                         <h4 class="mb-1">Detail Transaksi</h4>
                         <hr />
                         <table width="70%" style="margin-bottom:20px">

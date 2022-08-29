@@ -8,7 +8,8 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Ruangan Edit</h1>
+        <h1 class="h3 mb-0 text-gray-800">Edit Akun</h1>
+
     </div>
 
     <!-- Content Row -->
@@ -18,7 +19,7 @@
         <div class="col-md-12">
             <div class="card border-0 shadow rounded">
                 <div class="card-body">
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('adminkelolaakun-update', $user->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -35,16 +36,17 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="font-weight-bold">Nama Ruang</label>
-                            <input type="text" class="form-control @error('') is-invalid @enderror" name="" value="" placeholder="Masukkan Nama Ruangan">
+                            <label class="font-weight-bold">Nama Ruangan</label>
+                            <input type="text" class="form-control @error('namaruangan') is-invalid @enderror" name="namaruangan" value="{{ old('namaruangan', $user->first()->namaruangan) }}" placeholder="Masukkan Nama Ruangan">
 
                             <!-- error message untuk title -->
-                            @error('')
+                            @error('namaruangan')
                                 <div class="alert alert-danger mt-2">
                                     {{ $message }}
                                 </div>
                             @enderror
                         </div>
+
                         <button type="submit" class="btn btn-md btn-primary">UPDATE</button>
                         <button type="reset" class="btn btn-md btn-warning">RESET</button>
 

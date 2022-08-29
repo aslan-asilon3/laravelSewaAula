@@ -60,7 +60,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item sidebar-laporan @yield('active')">
-                <a class="nav-link" href="{{route('reservatorlaporan-index')}}">
+                <a class="nav-link" href="reservatorlaporan">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Laporan</span></a>
             </li>
@@ -189,7 +189,7 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-{{-- 
+{{--
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">

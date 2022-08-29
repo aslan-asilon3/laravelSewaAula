@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Ruang;
+use App\Models\Transaksi;
+use App\Models\User;
 
 class PenyewaDashboardController extends Controller
 {

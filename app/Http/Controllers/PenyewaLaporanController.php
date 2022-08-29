@@ -9,14 +9,13 @@ use PDF;
 use DB;
 use Carbon\Carbon;
 
-
-class KepalapuskesmasLaporanController extends Controller
+class PenyewaLaporanController extends Controller
 {
     //
     public function index()
     {
         // $ruangan_group_by = Transaksi::getBatch();
         $transaksis = Transaksi::all();
-        return view('kepalapuskesmas.laporan.index', compact('transaksis'));
+        return view('penyewa.laporan.index', compact('transaksis'));
     }
 }

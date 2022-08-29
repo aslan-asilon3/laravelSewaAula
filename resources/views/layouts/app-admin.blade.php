@@ -162,14 +162,11 @@
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
                                 </a>
-<<<<<<< HEAD
                                 <a class="dropdown-item" href="/home">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-=======
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/home" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
->>>>>>> cce4189b8cf04f95a3c6d1fdbaa7b83c9c85ef55
                                     Logout
                                 </a>
                             </div>

@@ -8,19 +8,19 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Ruangan Edit</h1>
+        <h1 class="h3 mb-0 text-gray-800">Tambah Akun</h1>
+
     </div>
 
     <!-- Content Row -->
     <div class="row">
 
-
         <div class="col-md-12">
             <div class="card border-0 shadow rounded">
                 <div class="card-body">
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('adminkelolaakun-store') }}" method="POST" enctype="multipart/form-data">
+
                         @csrf
-                        @method('PUT')
 
                         <div class="form-group">
                             <label class="font-weight-bold">GAMBAR</label>
@@ -35,17 +35,19 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="font-weight-bold">Nama Ruang</label>
-                            <input type="text" class="form-control @error('') is-invalid @enderror" name="" value="" placeholder="Masukkan Nama Ruangan">
+                            <label class="font-weight-bold">Nama Ruangan</label>
+                            <input type="text" class="form-control @error('namamaruangan') is-invalid @enderror" name="namamaruangan" value="{{ old('namamaruangan') }}" placeholder="Masukkan Nama Ruangan">
 
                             <!-- error message untuk title -->
-                            @error('')
+                            @error('namamaruangan')
                                 <div class="alert alert-danger mt-2">
                                     {{ $message }}
                                 </div>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-md btn-primary">UPDATE</button>
+
+
+                        <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
                         <button type="reset" class="btn btn-md btn-warning">RESET</button>
 
                     </form>

@@ -41,7 +41,6 @@ class ReservatortransaksiController extends Controller
             'tanggalpemakaiansampai'   => 'required',
             'namaruangan'   => 'required',
             'keperluan'   => 'required',
-            'diskon'   => 'required',
             'totalbayar'   => 'required',
             'keterangan'   => 'required',
         ]);
@@ -121,7 +120,7 @@ public function update(Request $request, Transaksi $transaksi)
     } else {
 
         //hapus old image
-        Storage::disk('local')->delete('public/transaksis/'.$transaksi->image);
+        Storage::disk('local')->delete('public/transaksiimage'.$transaksi->image);
 
         //upload new image
         $image = $request->file('image');
@@ -146,25 +145,25 @@ public function update(Request $request, Transaksi $transaksi)
 
     if($transaksi){
         //redirect dengan pesan sukses
-        return redirect()->route('admintransaksi-index')->with(['success' => 'Data Berhasil Diupdate!']);
+        return redirect()->route('reservatortransaksi-index')->with(['success' => 'Data Berhasil Diupdate!']);
     }else{
         //redirect dengan pesan error
-        return redirect()->route('admintransaksi-index')->with(['error' => 'Data Gagal Diupdate!']);
+        return redirect()->route('reservatortransaksi-index')->with(['error' => 'Data Gagal Diupdate!']);
     }
 }
 
     public function destroy($id)
     {
     $transaksi = Transaksi::findOrFail($id);
-    Storage::disk('local')->delete('public/transaksis/'.$transaksi->image);
+    Storage::disk('local')->delete('public/transaksiimage'.$transaksi->image);
     $transaksi->delete();
 
     if($transaksi){
         //redirect dengan pesan sukses
-        return redirect()->route('admintransaksi.index')->with(['success' => 'Data Berhasil Dihapus!']);
+        return redirect()->route('reservatortransaksi-index')->with(['success' => 'Data Berhasil Dihapus!']);
     }else{
         //redirect dengan pesan error
-        return redirect()->route('admintransaksi.index')->with(['error' => 'Data Gagal Dihapus!']);
+        return redirect()->route('reservatortransaksi-index')->with(['error' => 'Data Gagal Dihapus!']);
     }
     }
 
@@ -182,14 +181,6 @@ public function update(Request $request, Transaksi $transaksi)
 
     }
 
-    public function pdf(Transaksi $transaksi)
-    {
-        // $transaksi = Transaksi::findOrFail($transaksi->id);
 
-        // // // dd($transaksi);
-        // $pdf = PDF::loadview('admin/transaksi/pdf',['transaksi'=>$transaksi])->setPaper('a4', 'landscape');
-        // return $pdf->download('laporan-transaksi-pdf');
-        // return view('reservator.transaksi.pdf',compact('transaksi'));
-    }
 
 }

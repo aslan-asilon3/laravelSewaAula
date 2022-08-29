@@ -1,8 +1,8 @@
-@extends('layouts.app-admin')
-
-@section('title','Data Ruang')
+@extends('layouts.app-kepalapuskesmas')
 
 @section('active','active')
+
+@section('title','Transaksi')
 
 @section('content')
 
@@ -10,7 +10,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Data Ruang</h1>
+        <h1 class="h3 mb-0 text-gray-800">Penyewa / Laporan</h1>
 
     </div>
 
@@ -20,41 +20,39 @@
         <div class="col-md-12">
             <div class="card border-0 shadow rounded">
                 <div class="card-body">
-                    <a href="{{ route('admindataruang-create') }}" class="btn btn-md btn-success mb-3">TAMBAH </a>
+                    {{-- <a href="{{ route('admintransaksi-create') }}" class="btn btn-md btn-success mb-3">TAMBAH </a> --}}
+                    <div style="overflow-x:auto;">
                     <table class="table table-bordered">
                         <thead>
                           <tr>
                             <th scope="col">No</th>
                             <th scope="col">Image</th>
-                            <th scope="col">Nama ruangan</th>
+                            <th scope="col">Nama</th>
                             <th scope="col">AKSI</th>
                           </tr>
                         </thead>
                         <tbody>
-                          {{-- @forelse ($ruangans as $ruangan)
+                          @forelse ($transaksis as $transaksi)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td class="text-center">
-                                    <img src="{{ Storage::url('public/users/').$ruangan->image }}" class="rounded" style="width: 50px">
+                                    <img src="{{ Storage::url('public/users/').$transaksi->image }}" class="rounded" style="width: 50px">
                                 </td>
-                                <td>{{ $ruangan->namaruangan }}</td>
+                                <td>{{ $transaksi->namapenyewa }}</td>
                                 <td class="text-center">
-                                    <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('admindataruang-destroy', $ruangan->id) }}" method="POST">
-                                        <a href="{{ route('admindataruang-edit', $ruangan->id) }}" class="btn btn-sm btn-primary">EDIT</a>
-                                        {{-- <a href="adminruangan/edit" class="btn btn-sm btn-primary">EDIT</a> --}}
-                                        {{-- @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                                        <a href="{{ route('admintransaksi-detail', $transaksi->id) }}" class="btn btn-sm btn-primary">LAPORAN</a>
                                     </form>
                                 </td>
-                            </tr>  --}}
-                          {{-- @empty
+                            </tr>
+                          @empty
                               <div class="alert alert-danger">
                                   Data  belum Tersedia.
                               </div>
-                          @endforelse --}}
+                          @endforelse
                         </tbody>
                       </table>
+                      {{-- {{ $transaksis->links() }} --}}
+                  </div>
                 </div>
             </div>
         </div>

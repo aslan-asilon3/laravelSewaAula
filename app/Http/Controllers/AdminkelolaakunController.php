@@ -61,54 +61,54 @@ class AdminkelolaakunController extends Controller
     }
 
 
-public function update(Request $request, User $user)
-{
-    $this->validate($request, [
-        'name'     => 'required',
-        'email'   => 'required',
-        'is_admin'   => 'required',
-        'password'   => 'required'
-    ]);
-
-    //get data Blog by ID
-    $user = User::findOrFail($user->first()->id);
-
-    if($request->file('image') == "") {
-
-        $user->update([
-            'name'     => $request->name,
-            'email'   => $request->email,
-            'is_admin'   => $request->is_admin,
-            'password'   => $request->password,
+    public function update(Request $request, User $user)
+    {
+        $this->validate($request, [
+            'name'     => 'required',
+            'email'   => 'required',
+            'is_admin'   => 'required',
+            'password'   => 'required'
         ]);
 
-    } else {
+        //get data Blog by ID
+        $user = User::findOrFail($user->first()->id);
 
-        //hapus old image
-        Storage::disk('local')->delete('public/users/'.$user->image);
+        if($request->file('image') == "") {
 
-        //upload new image
-        $image = $request->file('image');
-        $image->storeAs('public/users', $image->hashName());
+            $user->update([
+                'name'     => $request->name,
+                'email'   => $request->email,
+                'is_admin'   => $request->is_admin,
+                'password'   => $request->password,
+            ]);
 
-        $user->update([
-            'image'     => $image->hashName(),
-            'name'     => $request->name,
-            'email'   => $request->email,
-            'is_admin'   => $request->is_admin,
-            'password'   => $request->password,
-        ]);
+        } else {
 
+            //hapus old image
+            Storage::disk('local')->delete('public/users/'.$user->image);
+
+            //upload new image
+            $image = $request->file('image');
+            $image->storeAs('public/users', $image->hashName());
+
+            $user->update([
+                'image'     => $image->hashName(),
+                'name'     => $request->name,
+                'email'   => $request->email,
+                'is_admin'   => $request->is_admin,
+                'password'   => $request->password,
+            ]);
+
+        }
+
+        if($user){
+            //redirect dengan pesan sukses
+            return redirect()->route('adminkelolaakun.index')->with(['success' => 'Data Berhasil Diupdate!']);
+        }else{
+            //redirect dengan pesan error
+            return redirect()->route('adminkelolaakun.index')->with(['error' => 'Data Gagal Diupdate!']);
+        }
     }
-
-    if($user){
-        //redirect dengan pesan sukses
-        return redirect()->route('adminkelolaakun.index')->with(['success' => 'Data Berhasil Diupdate!']);
-    }else{
-        //redirect dengan pesan error
-        return redirect()->route('adminkelolaakun.index')->with(['error' => 'Data Gagal Diupdate!']);
-    }
-}
 
 
 

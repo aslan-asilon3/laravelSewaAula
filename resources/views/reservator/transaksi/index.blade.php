@@ -60,9 +60,9 @@
                                 <td>{{ $transaksi->totalbayar }}</td>
                                 <td>{{ $transaksi->keterangan }}</td>
                                 <td class="text-center">
-                                    <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('admintransaksi-destroy', $transaksi->id) }}" method="POST">
-                                        <a href="{{ route('admintransaksi-detail', $transaksi->id) }}" class="btn btn-sm btn-primary">DETAIL</a>
-                                        <a href="{{ route('admintransaksi-edit', $transaksi->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                    <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('reservatortransaksi-destroy', $transaksi->id) }}" method="POST">
+                                        <a href="{{ route('reservatortransaksi-detail', $transaksi->id) }}" class="btn btn-sm btn-primary">DETAIL</a>
+                                        <a href="{{ route('reservatortransaksi-edit', $transaksi->id) }}" class="btn btn-sm btn-primary">EDIT</a>
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
@@ -75,7 +75,7 @@
                               </div>
                           @endforelse
                         </tbody>
-                      </table>
+                    </table>
                       {{ $transaksis->links() }}
                   </div>
                 </div>
