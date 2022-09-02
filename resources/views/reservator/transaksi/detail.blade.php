@@ -52,7 +52,16 @@
             $date->settings(['formatFunction' => 'translatedFormat']);
 
             echo $date->format('l, j F Y ; h:i a');
-        }} --}}
+         }} --}}
+
+
+            {{-- <a href="" hidden> --}}
+            {{-- {{
+                $total =  old('pemakaiansampai', $transaksi->pemakaiansampai) -  old('pemakaiandari', $transaksi->pemakaiandari);
+                // $total = strtotime(old('pemakaiansampai', $transaksi->pemakaiansampai));
+
+            }} --}}
+            {{-- </a> --}}
 
         <div class="col-md-12">
 
@@ -63,11 +72,7 @@
                         @method('POST')
                         @csrf
 
-                        <a href="" hidden>
-                            {{
-                                $total =  old('pemakaiansampai', $transaksi->pemakaiansampai) -  old('pemakaiandari', $transaksi->pemakaiandari)
-                            }}
-                        </a>
+
 
 
                         <h4 class="mb-1">Detail Transaksi</h4>
@@ -82,8 +87,12 @@
                                 {{-- <td>{{ $transaksi->pemakaiandari }}</td> --}}
                                 <td>{{ old('tanggalpemakaiandari', $transaksi->tanggalpemakaiandari) }}</td>
                                 <td>{{ old('tanggalpemakaiansampai', $transaksi->tanggalpemakaiansampai) }}</td>
-                                <td><input type="hidden" value="{{ $selisihhari = strtotime(old('tanggalpemakaiandari', $transaksi->tanggalpemakaiansampai))- strtotime(old('tanggalpemakaiandari', $transaksi->tanggalpemakaiandari))}}"></td>
-                                <td>{{ $hari = $selisihhari/60/60/24;}}</td>
+                                <td><input type="hidden" value="{{
+
+                                    $aa =  strtotime(old('tanggalpemakaiansampai', $transaksi->tanggalpemakaiansampai)) - strtotime(old('tanggalpemakaiandari', $transaksi->tanggalpemakaiandari))
+                                 }}"></td>
+                                {{-- {{ dd($aa) }} --}}
+                                <td>{{ $hari = $aa / (60 * 60 * 24) }}</td>
                             </tr>
                         </table>
                         <table width="70%" style="margin-bottom:20px">
@@ -112,7 +121,7 @@
                                 {{-- <td>{{ old('harga', $transaksi->harga) }}</td> --}}
                                 <td>{{ old('harga', $transaksi->harga) }}</td>
                                 <td>1 hari</td>
-                                <td>{{ $total }}</td>
+                                <td>Rp 2.500.000</td>
                             </tr>
                             <tr>
                                 <td colspan="2"><strong>Total<strong></td>

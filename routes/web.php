@@ -96,10 +96,11 @@ Route::group(['middleware' => 'is_admin'], function() {
         // Route::get('admintransaksi/update', 'AdmintransaksiController@update')->name('admintransaksiupdate');
     });
 
-    // Laporan Admin
-    Route::group(['middleware' => 'is_admin', 'prefix' => 'adminlaporan'], function() {
-        Route::get('/', [AdminlaporanController::class,'index'])->name('adminlaporan-index');
 
+    //  Admin  Laporan
+    Route::group(['prefix' => 'adminlaporan'], function() {
+        Route::get('/pdf', [AdminlaporanController::class,'pdf'])->name('adminlaporan-pdf');
+        Route::get('/', [AdminlaporanController::class,'index'])->name('adminlaporan-index');
     });
 
 });

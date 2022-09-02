@@ -36,7 +36,6 @@ class ReservatorlaporanController extends Controller
         }
         $raw_start_date=$r->input('start_date');
         $raw_end_date=$r->input('end_date');
-
         return view('/reservator/laporan/index', compact('transaksis'))->with('raw_start_date',$raw_start_date)->with('raw_end_date',$raw_end_date);
     }
 }

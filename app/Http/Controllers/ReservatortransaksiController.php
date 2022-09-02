@@ -78,79 +78,84 @@ class ReservatortransaksiController extends Controller
     public function edit(Transaksi $transaksi)
     {
         return view('reservator.transaksi.edit', compact('transaksi'));
-        // return view('reservator.transaksi.detail', compact('transaksi'));
     }
 
 
-public function update(Request $request, Transaksi $transaksi)
-{
-    $this->validate($request, [
-        'noktp'     => 'required',
-        'namapenyewa'   => 'required',
-        'nohppenyewa'   => 'required',
-        'emailpenyewa'   => 'required',
-        'alamatpenyewa'   => 'required',
-        'tanggalpemakaiandari'   => 'required',
-        'tanggalpemakaiansampai'   => 'required',
-        'namaruangan'   => 'required',
-        'keperluan'   => 'required',
-        'totalbayar'   => 'required',
-        'keterangan'   => 'required',
-    ]);
+    public function detail(Transaksi $transaksi)
+    {
+        return view('reservator.transaksi.detail',compact('transaksi'));
+    }
 
-    //get data Blog by ID
-    $transaksi = Transaksi::findOrFail($transaksi->id);
 
-    if($request->file('image') == "") {
-
-        $transaksi->update([
-            'noktp'     => $request->noktp,
-            'namapenyewa'   => $request->namapenyewa,
-            'nohppenyewa'   => $request->nohppenyewa,
-            'emailpenyewa'   => $request->emailpenyewa,
-            'alamatpenyewa'   => $request->alamatpenyewa,
-            'tanggalpemakaiandari'   => $request->tanggalpemakaiandari,
-            'tanggalpemakaiansampai'   => $request->tanggalpemakaiansampai,
-            'namaruangan'   => $request->namaruangan,
-            'keperluan'   => $request->keperluan,
-            'totalbayar'   => $request->totalbayar,
-            'keterangan'   => $request->keterangan,
+    public function update(Request $request, Transaksi $transaksi)
+    {
+        $this->validate($request, [
+            'noktp'     => 'required',
+            'namapenyewa'   => 'required',
+            'nohppenyewa'   => 'required',
+            'emailpenyewa'   => 'required',
+            'alamatpenyewa'   => 'required',
+            'tanggalpemakaiandari'   => 'required',
+            'tanggalpemakaiansampai'   => 'required',
+            'namaruangan'   => 'required',
+            'keperluan'   => 'required',
+            'totalbayar'   => 'required',
+            'keterangan'   => 'required',
         ]);
 
-    } else {
+        //get data Blog by ID
+        $transaksi = Transaksi::findOrFail($transaksi->id);
 
-        //hapus old image
-        Storage::disk('local')->delete('public/transaksiimage'.$transaksi->image);
+        if($request->file('image') == "") {
 
-        //upload new image
-        $image = $request->file('image');
-        $image->storeAs('public/transaksis', $image->hashName());
+            $transaksi->update([
+                'noktp'     => $request->noktp,
+                'namapenyewa'   => $request->namapenyewa,
+                'nohppenyewa'   => $request->nohppenyewa,
+                'emailpenyewa'   => $request->emailpenyewa,
+                'alamatpenyewa'   => $request->alamatpenyewa,
+                'tanggalpemakaiandari'   => $request->tanggalpemakaiandari,
+                'tanggalpemakaiansampai'   => $request->tanggalpemakaiansampai,
+                'namaruangan'   => $request->namaruangan,
+                'keperluan'   => $request->keperluan,
+                'totalbayar'   => $request->totalbayar,
+                'keterangan'   => $request->keterangan,
+            ]);
 
-        $transaksi->update([
-            'image'     => $image->hashName(),
-            'noktp'     => $request->noktp,
-            'namapenyewa'   => $request->namapenyewa,
-            'nohppenyewa'   => $request->nohppenyewa,
-            'emailpenyewa'   => $request->emailpenyewa,
-            'alamatpenyewa'   => $request->alamatpenyewa,
-            'tanggalpemakaiandari'   => $request->tanggalpemakaiandari,
-            'tanggalpemakaiansampai'   => $request->tanggalpemakaiansampai,
-            'namaruangan'   => $request->namaruangan,
-            'keperluan'   => $request->keperluan,
-            'totalbayar'   => $request->totalbayar,
-            'keterangan'   => $request->keterangan,
-        ]);
+        } else {
 
+            //hapus old image
+            Storage::disk('local')->delete('public/transaksiimage'.$transaksi->image);
+
+            //upload new image
+            $image = $request->file('image');
+            $image->storeAs('public/transaksis', $image->hashName());
+
+            $transaksi->update([
+                'image'     => $image->hashName(),
+                'noktp'     => $request->noktp,
+                'namapenyewa'   => $request->namapenyewa,
+                'nohppenyewa'   => $request->nohppenyewa,
+                'emailpenyewa'   => $request->emailpenyewa,
+                'alamatpenyewa'   => $request->alamatpenyewa,
+                'tanggalpemakaiandari'   => $request->tanggalpemakaiandari,
+                'tanggalpemakaiansampai'   => $request->tanggalpemakaiansampai,
+                'namaruangan'   => $request->namaruangan,
+                'keperluan'   => $request->keperluan,
+                'totalbayar'   => $request->totalbayar,
+                'keterangan'   => $request->keterangan,
+            ]);
+
+        }
+
+        if($transaksi){
+            //redirect dengan pesan sukses
+            return redirect()->route('reservatortransaksi-index')->with(['success' => 'Data Berhasil Diupdate!']);
+        }else{
+            //redirect dengan pesan error
+            return redirect()->route('reservatortransaksi-index')->with(['error' => 'Data Gagal Diupdate!']);
+        }
     }
-
-    if($transaksi){
-        //redirect dengan pesan sukses
-        return redirect()->route('reservatortransaksi-index')->with(['success' => 'Data Berhasil Diupdate!']);
-    }else{
-        //redirect dengan pesan error
-        return redirect()->route('reservatortransaksi-index')->with(['error' => 'Data Gagal Diupdate!']);
-    }
-}
 
     public function destroy($id)
     {
@@ -172,15 +177,5 @@ public function update(Request $request, Transaksi $transaksi)
         $transaksi= Transaksi::find($memberID); //This will fetch the respective record from the table.
         return view('reservator.transaksi.detail',compact('transaksi'));
     }
-
-    public function detail(Transaksi $transaksi)
-    {
-        // $transaksi= Transaksi::find($transaksi)->get()->first(); //This will fetch the respective record from the table.
-
-        return view('reservator.transaksi.detail',compact('transaksi'));
-
-    }
-
-
 
 }

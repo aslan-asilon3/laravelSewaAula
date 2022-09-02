@@ -177,14 +177,18 @@ class AdmintransaksiController extends Controller
         {
             // $transaksi= Transaksi::find($transaksi)->get()->first(); //This will fetch the respective record from the table.
 
-            return view('admin.transaksi.detail',compact('transaksi'));
-            
+            // $jumlah = DB::table('Transaksi')->select('id','pemakaiandari')->get();
+
+
+
+            return view('admin.transaksi.detail');
+
         }
-        
+
         public function pdf(Transaksi $transaksi)
         {
             // $transaksi = Transaksi::findOrFail($transaksi->id);
-            
+
             // // // dd($transaksi);
             // $pdf = PDF::loadview('admin/transaksi/pdf',['transaksi'=>$transaksi])->setPaper('a4', 'landscape');
             // return $pdf->download('laporan-transaksi-pdf');

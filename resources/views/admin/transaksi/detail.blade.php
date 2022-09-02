@@ -47,11 +47,11 @@
     <!-- Content Row -->
     <div class="row">
         {{-- {{
-            $date = Carbon::parse('2021-03-16 08:27:00')->locale('id');
+            // $date = Carbon::parse('2021-03-16 08:27:00')->locale('id');
 
-            $date->settings(['formatFunction' => 'translatedFormat']);
+            // $date->settings(['formatFunction' => 'translatedFormat']);
 
-            echo $date->format('l, j F Y ; h:i a');
+            // echo $date->format('l, j F Y ; h:i a');
         }} --}}
 
         <div class="col-md-12">
@@ -64,6 +64,7 @@
                         @csrf
                         <a href="" hidden>
                             {{
+                                // $transaksi =
                                 $total =  old('pemakaiansampai', $transaksi->pemakaiansampai) -  old('pemakaiandari', $transaksi->pemakaiandari)
                             }}
                         </a>
@@ -76,7 +77,7 @@
                                 <th width="50%">Jumlah Hari:</th>
                             </tr>
                             <tr>
-                                {{-- <td>{{ $transaksi->pemakaiandari }}</td> --}}
+                                <td>{{ $transaksi->pemakaiandari }}</td>
                                 <td>{{ old('tanggalpemakaiandari', $transaksi->tanggalpemakaiandari) }}</td>
                                 <td>{{ old('tanggalpemakaiansampai', $transaksi->tanggalpemakaiansampai) }}</td>
                                 <td><input type="hidden" value="{{ $selisihhari = strtotime(old('tanggalpemakaiandari', $transaksi->tanggalpemakaiansampai))- strtotime(old('tanggalpemakaiandari', $transaksi->tanggalpemakaiandari))}}"></td>
@@ -106,7 +107,7 @@
                                 <th width="25%">Total</th>
                             </tr>
                             <tr>
-                                {{-- <td>{{ old('harga', $transaksi->harga) }}</td> --}}
+                                <td>{{ old('harga', $transaksi->harga) }}</td>
                                 <td>{{ old('harga', $transaksi->harga) }}</td>
                                 <td>1 hari</td>
                                 <td>{{ $total }}</td>

@@ -11,7 +11,7 @@
 </style>
 
 
-test
+<h1 style="text-align: center;">Laporan Sewa Aula</h1>
                         <table border="1" class="table table-bordered">
                             <thead>
                               <tr>
