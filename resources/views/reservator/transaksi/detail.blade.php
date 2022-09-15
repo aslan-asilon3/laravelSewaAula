@@ -68,8 +68,8 @@
             <div class="card">
                 <div class="card-header"><strong><i class="icon-tasks"></i> Rincian Reservasi</strong></div>
                 <div class="card-body">
-                    <form id="form" method="POST" action="">
-                        @method('POST')
+                    <form id="form">
+                         {{-- @method('POST') --}}
                         @csrf
 
 
@@ -128,8 +128,8 @@
                                 <td><strong>Rp. {{ $hasil = old('totalbayar', $transaksi->totalbayar)* $hari }},-</strong></td>
                             </tr>
                         </table>
-                        <button type="submit" onclick="window.print()" class="btn btn-success">Print PDF</button>
-                    </form>
+                        <a type="submit" onclick="window.print()" class="btn btn-success" href="{{url('reservatortransaksi/generate-pdf')}}" >Print</a>
+                     </form>
                 </div>
             </div>
 
@@ -234,6 +234,20 @@
     {{-- <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
     <script>
         CKEDITOR.replace( 'keterangan' );
+    </script> --}}
+
+    {{-- <script>
+            window.onafterprint = function(e){
+        closePrintView();
+    };
+
+    function myFunction(){
+        window.print();
+    }
+
+    function closePrintView() {
+        window.location.href = 'https://bing.com';
+    }
     </script> --}}
 </body>
 

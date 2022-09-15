@@ -36,7 +36,7 @@
                             <th scope="col">Tanggal Sampai</th>
                             <th scope="col">Ruangan</th>
                             <th scope="col">Keperluan</th>
-                            <th scope="col">Total Bayar</th>
+                            {{-- <th scope="col">Total Bayar</th> --}}
                             <th scope="col">Keterangan</th>
                             <th scope="col">AKSI</th>
                           </tr>
@@ -57,7 +57,7 @@
                                 <td>{{ $transaksi->tanggalpemakaiansampai }}</td>
                                 <td>{{ $transaksi->namaruangan }}</td>
                                 <td>{{ $transaksi->keperluan }}</td>
-                                <td>{{ $transaksi->totalbayar }}</td>
+                                {{-- <td>{{ $transaksi->totalbayar }}</td> --}}
                                 <td>{{ $transaksi->keterangan }}</td>
                                 <td class="text-center">
                                     <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('admintransaksi-destroy', $transaksi->id) }}" method="POST">

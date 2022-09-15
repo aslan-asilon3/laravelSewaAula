@@ -178,4 +178,40 @@ class ReservatortransaksiController extends Controller
         return view('reservator.transaksi.detail',compact('transaksi'));
     }
 
+    public function generatePDF(Request $request, Transaksi $transaksi)
+
+    {
+
+        // $data = [
+
+        //     'title' => 'Welcome to ItSolutionStuff.com',
+
+        //     'date' => date('m/d/Y')
+
+        // ];
+        $this->validate($request, [
+            'noktp'     => 'required',
+            'namapenyewa'   => 'required',
+            'nohppenyewa'   => 'required',
+            'emailpenyewa'   => 'required',
+            'alamatpenyewa'   => 'required',
+            'tanggalpemakaiandari'   => 'required',
+            'tanggalpemakaiansampai'   => 'required',
+            'namaruangan'   => 'required',
+            'keperluan'   => 'required',
+            'totalbayar'   => 'required',
+            'keterangan'   => 'required',
+        ]);
+
+
+
+        $pdf = PDF::loadView('admin.transaksi.detail', $transaksi);
+        // $pdf = PDF::loadView('admin.transaksi.detail',$transaksi->toArray())->output();
+
+
+
+        return $pdf->download('report-transaksi.pdf');
+
+    }
+
 }

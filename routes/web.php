@@ -122,6 +122,7 @@ Route::group(['middleware' => 'is_admin'], function() {
         Route::put('/{transaksi}', [ReservatortransaksiController::class,'update'])->name('reservatortransaksi-update');
         Route::get('transaksi/{transaksi}/edit', [ReservatortransaksiController::class,'edit'])->name('reservatortransaksi-edit');
         Route::get('/{transaksi}/detail',[ReservatortransaksiController::class,'detail'])->name('reservatortransaksi-detail');
+        Route::get('/generate-pdf', [ReservatortransaksiController::class,'generatePDF'])->name('reservator-pdf');
     });
 
     //  Reservator  Laporan
@@ -193,3 +194,7 @@ Route::group(['middleware' => 'is_admin'], function() {
 //     Route::get('sales/{sales}/edit', [SalestransaksiController::class,'edit'])->name('salestransaksi-edit');
 //     Route::get('/{sales}/detail',[SalestransaksiController::class,'detail'])->name('salestransaksi-detail');
 // });
+
+
+
+Route::resource('pdf', PdfController::class);
